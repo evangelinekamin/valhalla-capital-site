@@ -1,0 +1,564 @@
+/* ============================================================
+   VALHALLA CAPITAL — In Memoriam
+   13 February – 16 June 2026
+
+   A static memorial for an autonomous value-investing agent.
+   Aesthetic distilled from the fund's monitoring terminal:
+   Swiss International Typographic Style meets VA-11 Hall-A
+   terminal warmth. Deep navy ground, warm cyan for life,
+   soft pink for the 86'd, amber for the in-between.
+
+   Self-contained: no web fonts, no JS, no external requests.
+   Type rides a system serif + grotesque + mono stack chosen
+   to echo the dashboard's Helvetica Neue / IBM Plex Mono mood.
+   ============================================================ */
+
+:root {
+    /* Backgrounds */
+    --bg-deep:    #0c0e1a;
+    --bg-panel:   #141627;
+    --bg-surface: #1a1d33;
+    --bg-hover:   #1f2340;
+
+    /* Text */
+    --text-primary: #d8dae5;
+    --text-muted:   #8a8ea8;
+    --text-dim:     #565a7e;
+
+    /* Accents — the service-bar semantics, kept */
+    --cyan:      #54e5d0;   /* served / alive / positive */
+    --cyan-dim:  #2a7a6f;
+    --pink:      #ff6b9d;   /* 86'd / loss / shutdown */
+    --pink-dim:  #803050;
+    --amber:     #f0b866;   /* mixing / transition / peak */
+    --amber-dim: #7a5c33;
+    --lilac:     #cdb4ff;   /* accents, links */
+    --lilac-dim: #6e5a99;
+
+    /* Type stacks */
+    --font-display: "Helvetica Neue", "Inter", "Arial Narrow",
+                    system-ui, sans-serif;
+    --font-body:    "Iowan Old Style", "Palatino Linotype", "Palatino",
+                    "Georgia", "Times New Roman", serif;
+    --font-mono:    "IBM Plex Mono", "SF Mono", "Cascadia Code",
+                    "Fira Code", ui-monospace, monospace;
+
+    /* Type scale (modular, ratio ~1.25) */
+    --fs-xs:  0.75rem;
+    --fs-sm:  0.85rem;
+    --fs-base: 1rem;
+    --fs-md:  1.15rem;
+    --fs-lg:  1.4rem;
+    --fs-xl:  1.85rem;
+    --fs-2xl: 2.6rem;
+    --fs-3xl: 4rem;
+
+    --gutter: 1.5rem;
+    --maxw:   980px;
+
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* -- Reset & base --------------------------------------------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    line-height: 1.7;
+    color: var(--text-primary);
+    background: var(--bg-deep);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* -- CRT nods: scanlines + vignette (very subtle) ------------- */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9998;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 58%,
+        rgba(0, 0, 0, 0.38) 100%
+    );
+}
+
+/* -- Layout --------------------------------------------------- */
+.shell {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 var(--gutter) 4rem;
+}
+
+.section {
+    padding: 3.5rem 0;
+    border-top: 1px solid var(--bg-surface);
+}
+
+.section__label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--text-dim);
+    margin-bottom: 1.4rem;
+}
+
+a {
+    color: var(--lilac);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color var(--ease-out) 200ms, border-color var(--ease-out) 200ms;
+}
+
+a:hover {
+    color: var(--text-primary);
+    border-bottom-color: var(--lilac-dim);
+}
+
+a:focus-visible,
+.skip-link:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* -- Skip link (a11y) ----------------------------------------- */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: 0;
+    background: var(--cyan);
+    color: var(--bg-deep);
+    padding: 0.5rem 1rem;
+    z-index: 10000;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+}
+
+.skip-link:focus {
+    left: 0.5rem;
+    top: 0.5rem;
+}
+
+/* -- Banner slot (Eve fills this) ----------------------------- */
+.banner {
+    background: var(--bg-panel);
+    border: 1px solid var(--lilac-dim);
+    border-left: 3px solid var(--lilac);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    padding: 1rem 1.25rem;
+    margin: var(--gutter) auto 0;
+    max-width: var(--maxw);
+    letter-spacing: 0.02em;
+}
+
+.banner strong {
+    color: var(--lilac);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: var(--fs-xs);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* -- Hero ----------------------------------------------------- */
+.hero {
+    text-align: center;
+    padding: 5rem 0 3.5rem;
+    position: relative;
+}
+
+.hero__wing {
+    width: 96px;
+    height: 96px;
+    color: var(--cyan);
+    filter: drop-shadow(0 0 14px var(--cyan-dim));
+    margin: 0 auto 1.75rem;
+    display: block;
+    animation: wing-breathe 5s ease-in-out infinite;
+}
+
+@keyframes wing-breathe {
+    0%, 100% { opacity: 0.78; }
+    50%      { opacity: 1; }
+}
+
+.hero__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-3xl);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    color: var(--text-primary);
+}
+
+.hero__title span {
+    color: var(--cyan);
+    text-shadow: 0 0 16px var(--cyan-dim);
+}
+
+.hero__epitaph {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: var(--fs-md);
+    color: var(--text-muted);
+    max-width: 38ch;
+    margin: 1.4rem auto 0;
+    line-height: 1.5;
+}
+
+.hero__dates {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 1.75rem;
+}
+
+.hero__dates .sep {
+    color: var(--pink);
+    padding: 0 0.6em;
+}
+
+.hero__verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.75rem;
+    padding: 0.4rem 0.9rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--pink);
+    background: rgba(255, 107, 157, 0.06);
+    border: 1px solid var(--pink-dim);
+}
+
+.hero__verdict .pip {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 0 8px var(--pink);
+}
+
+/* -- Stat grid ------------------------------------------------ */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--bg-surface);
+    border: 1px solid var(--bg-surface);
+}
+
+.stat {
+    background: var(--bg-panel);
+    padding: 1.4rem 1.5rem;
+}
+
+.stat__value {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xl);
+    font-weight: 600;
+    line-height: 1.05;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+}
+
+.stat__value--good { color: var(--cyan); }
+.stat__value--bad  { color: var(--pink); }
+.stat__value--warn { color: var(--amber); }
+
+.stat__label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+.stat__sub {
+    font-size: var(--fs-sm);
+    color: var(--text-dim);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+}
+
+/* The hero stat spans wider on the grid */
+.stat--wide {
+    grid-column: span 2;
+}
+
+@media (max-width: 520px) {
+    .stat--wide { grid-column: span 1; }
+}
+
+/* -- Chart ---------------------------------------------------- */
+.chart-figure {
+    margin: 0;
+}
+
+.chart-frame {
+    background: var(--bg-panel);
+    border: 1px solid var(--bg-surface);
+    padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.equity-curve {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem 1.75rem;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.chart-legend__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chart-legend__swatch {
+    width: 18px;
+    height: 0;
+    border-top: 2px solid var(--cyan);
+    display: inline-block;
+}
+
+.chart-legend__swatch--base {
+    border-top: 2px dashed var(--text-dim);
+}
+
+.chart-legend__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.chart-legend__dot--peak { background: var(--amber); }
+.chart-legend__dot--stop { background: var(--pink); }
+
+.chart-caption {
+    font-size: var(--fs-sm);
+    color: var(--text-dim);
+    margin-top: 1rem;
+    line-height: 1.6;
+    max-width: 70ch;
+}
+
+/* -- Narrative ------------------------------------------------ */
+.prose {
+    max-width: 66ch;
+}
+
+.prose p {
+    margin-bottom: 1.3rem;
+    color: var(--text-primary);
+}
+
+.prose p:last-child {
+    margin-bottom: 0;
+}
+
+.prose .lede {
+    font-size: var(--fs-md);
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.prose strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+.prose em {
+    color: var(--text-muted);
+}
+
+.prose .term {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    color: var(--cyan);
+    letter-spacing: 0.02em;
+}
+
+.prose .term--bad {
+    color: var(--pink);
+}
+
+/* Pull-quote — a principle the agent could quote but not enact */
+.pullquote {
+    margin: 2.5rem 0 2.5rem;
+    padding: 1.25rem 0 1.25rem 1.5rem;
+    border-left: 3px solid var(--lilac-dim);
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 60ch;
+}
+
+.pullquote cite {
+    display: block;
+    margin-top: 0.7rem;
+    font-family: var(--font-mono);
+    font-style: normal;
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--pink);
+}
+
+/* -- Ledger (the cost / what-it-learned strip) ---------------- */
+.ledger {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--gutter);
+}
+
+.ledger__cell {
+    background: var(--bg-panel);
+    border: 1px solid var(--bg-surface);
+    border-top: 2px solid var(--amber-dim);
+    padding: 1.25rem 1.4rem;
+}
+
+.ledger__cell h3 {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--amber);
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.ledger__cell p {
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.ledger__cell .big {
+    font-family: var(--font-mono);
+    font-size: var(--fs-lg);
+    font-variant-numeric: tabular-nums;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+/* -- Footer --------------------------------------------------- */
+.footer {
+    border-top: 1px solid var(--bg-surface);
+    margin-top: 1rem;
+    padding-top: 2.5rem;
+    text-align: center;
+}
+
+.footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    margin-bottom: 1.75rem;
+}
+
+.footer__note {
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+    max-width: 56ch;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.footer__memoriam {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--text-dim);
+}
+
+.footer__memoriam .wing-inline {
+    width: 14px;
+    height: 14px;
+    vertical-align: -0.15em;
+    color: var(--cyan-dim);
+    margin: 0 0.5em;
+    display: inline-block;
+}
+
+/* -- Reduced motion ------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .hero__wing { animation: none; opacity: 0.92; }
+}
+
+/* -- Print ---------------------------------------------------- */
+@media print {
+    body::before,
+    body::after { display: none; }
+    body { background: #fff; color: #111; }
+}
