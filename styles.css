@@ -600,7 +600,9 @@ a:focus-visible,
 
 /* -- Full post-mortem body ------------------------------------ */
 .postmortem__body {
-    max-width: 74ch;
+    max-width: 80ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .postmortem__body > *:first-child { margin-top: 0; }
@@ -676,6 +678,8 @@ a:focus-visible,
     padding: 0;
     font-size: var(--fs-sm);
     line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
 /* tables */
