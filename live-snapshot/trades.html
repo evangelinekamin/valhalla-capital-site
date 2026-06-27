@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Valhalla Capital — Trades</title>
+    <link rel="icon" href="static/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="static/style.css">
+    <script src="static/vendor/htmx-2.0.4.min.js" defer></script>
+    <script src="static/app.js" defer></script>
+    <meta name="htmx-config" content='{"defaultSwapStyle":"innerHTML"}'>
+</head>
+<body>
+    <div class="frozen-ribbon"><span class="frozen-ribbon__dot"></span><span>Frozen snapshot · <strong>Valhalla Capital</strong> dashboard, final state 2026-06-16 · no longer live</span></div>
+    <div class="shell">
+
+        <header class="header">
+            <div>
+                <h1 class="header__title"><span>Valhalla</span> Capital</h1>
+                <p class="header__subtitle">fund monitoring terminal</p>
+                <p class="header__quote">“Everything is going to be alright.”</p>
+            </div>
+            <div class="header__meta">
+                
+                <span class="pulse"></span>
+                <span id="clock" class="mono"></span>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <a href="index.html"
+               class="nav__item ">
+                <span class="nav__icon">◆</span>
+                Status
+            </a>
+            <a href="valkyrie.html"
+               class="nav__item ">
+                <span class="nav__icon">⟡</span>
+                Valkyrie
+            </a>
+            <a href="decisions.html"
+               class="nav__item ">
+                <span class="nav__icon">◈</span>
+                Decisions
+            </a>
+            <a href="trades.html"
+               class="nav__item nav__item--active">
+                <span class="nav__icon">△</span>
+                Trades
+            </a>
+        </nav>
+
+        <main>
+
+<div class="page-header">
+    <h2 class="page-header__title">Trade History</h2>
+    <p class="page-header__desc">Execution log and portfolio state from IBKR</p>
+</div>
+
+
+
+<div class="portfolio-overview">
+    <section class="portfolio-holdings">
+        <h3 class="group__label">Current Holdings</h3>
+        <div class="holdings-table">
+            <div class="holdings-header">
+                <span>Ticker</span>
+                <span>Qty</span>
+                <span>Avg</span>
+                <span>P&L</span>
+            </div>
+            <div class="holdings-row">
+                <span class="trade-row__ticker">RLI</span>
+                <span class="mono">2</span>
+                <span class="mono">$51.50</span>
+                <span class="mono text-served">
+                    $4.63
+                </span>
+            </div>
+            <div class="holdings-row">
+                <span class="trade-row__ticker">SMMT</span>
+                <span class="mono">10</span>
+                <span class="mono">$14.11</span>
+                <span class="mono text-86d">
+                    $-1.46
+                </span>
+            </div>
+            <div class="holdings-row">
+                <span class="trade-row__ticker">VISN</span>
+                <span class="mono">6</span>
+                <span class="mono">$12.41</span>
+                <span class="mono text-served">
+                    $2.08
+                </span>
+            </div>
+            <div class="holdings-row">
+                <span class="trade-row__ticker">OBE</span>
+                <span class="mono">3</span>
+                <span class="mono">$10.40</span>
+                <span class="mono text-86d">
+                    $-0.32
+                </span>
+            </div>
+            <div class="holdings-row" style="border-top: 1px solid var(--border); margin-top: 0.25rem; padding-top: 0.25rem;">
+                <span class="trade-row__ticker" style="opacity: 0.7;">CASH</span>
+                <span class="mono" style="opacity: 0.5;">—</span>
+                <span class="mono" style="opacity: 0.5;">—</span>
+                <span class="mono">$547.63</span>
+            </div>
+            <div class="holdings-row" style="border-top: 1px solid var(--border); margin-top: 0.25rem; padding-top: 0.35rem;">
+                <span style="font-weight: 600; opacity: 0.9;">Total</span>
+                <span></span>
+                <span></span>
+                <span class="mono" style="font-weight: 600;">$902.33</span>
+            </div>
+            <div style="font-size: 0.7rem; opacity: 0.4; margin-top: 0.35rem; text-align: right;">
+                IBKR data 4h ago
+            </div>
+        </div>
+    </section>
+
+    <section class="chart-section">
+        <div class="chart-toggle">
+            <button type="button" class="chart-toggle__btn chart-toggle__btn--active" data-chart-mode="value">Portfolio Value</button>
+            <button type="button" class="chart-toggle__btn" data-chart-mode="pnl">P&L</button>
+        </div>
+        <div class="chart-container"
+             id="portfolio-chart"
+             data-portfolio-chart
+             data-series="{&#34;pnl&#34;: [{&#34;time&#34;: &#34;2026-02-19T18:37:56.888795+00:00&#34;, &#34;value&#34;: 0.0}, {&#34;time&#34;: &#34;2026-02-19T18:38:36.130460+00:00&#34;, &#34;value&#34;: 0.0}, {&#34;time&#34;: &#34;2026-02-19T19:14:32.483513+00:00&#34;, &#34;value&#34;: 0.0}, {&#34;time&#34;: &#34;2026-02-20T20:02:54.413719+00:00&#34;, &#34;value&#34;: 0.0}, {&#34;time&#34;: &#34;2026-03-12T17:29:06.688765+00:00&#34;, &#34;value&#34;: 15.94}, {&#34;time&#34;: &#34;2026-03-17T14:02:15.883760+00:00&#34;, &#34;value&#34;: 15.94}, {&#34;time&#34;: &#34;2026-03-25T14:01:47.789496+00:00&#34;, &#34;value&#34;: 15.94}, {&#34;time&#34;: &#34;2026-04-06T14:01:16.567913+00:00&#34;, &#34;value&#34;: 15.94}, {&#34;time&#34;: &#34;2026-04-14T14:01:16.791231+00:00&#34;, &#34;value&#34;: 15.94}, {&#34;time&#34;: &#34;2026-04-15T14:01:00.387633+00:00&#34;, &#34;value&#34;: 14.7}, {&#34;time&#34;: &#34;2026-04-16T14:02:05.947629+00:00&#34;, &#34;value&#34;: 14.7}, {&#34;time&#34;: &#34;2026-04-17T14:03:57.234639+00:00&#34;, &#34;value&#34;: 14.7}, {&#34;time&#34;: &#34;2026-04-23T14:01:23.713926+00:00&#34;, &#34;value&#34;: -4.8}, {&#34;time&#34;: &#34;2026-04-23T14:01:38.606347+00:00&#34;, &#34;value&#34;: -3.72}, {&#34;time&#34;: &#34;2026-04-23T14:01:52.149038+00:00&#34;, &#34;value&#34;: -3.72}, {&#34;time&#34;: &#34;2026-04-29T14:01:05.179589+00:00&#34;, &#34;value&#34;: 4.17}, {&#34;time&#34;: &#34;2026-04-29T14:01:24.614075+00:00&#34;, &#34;value&#34;: 5.05}, {&#34;time&#34;: &#34;2026-04-30T14:01:48.825059+00:00&#34;, &#34;value&#34;: 94.53}, {&#34;time&#34;: &#34;2026-04-30T14:02:06.856388+00:00&#34;, &#34;value&#34;: 94.37}, {&#34;time&#34;: &#34;2026-04-30T14:02:25.634184+00:00&#34;, &#34;value&#34;: 94.37}, {&#34;time&#34;: &#34;2026-05-01T14:01:06.916486+00:00&#34;, &#34;value&#34;: 92.48}, {&#34;time&#34;: &#34;2026-05-01T14:01:26.835289+00:00&#34;, &#34;value&#34;: 92.48}, {&#34;time&#34;: &#34;2026-05-01T14:01:45.822518+00:00&#34;, &#34;value&#34;: 92.48}, {&#34;time&#34;: &#34;2026-05-07T14:02:03.495906+00:00&#34;, &#34;value&#34;: 99.74}, {&#34;time&#34;: &#34;2026-05-07T14:02:28.487364+00:00&#34;, &#34;value&#34;: 166.98}, {&#34;time&#34;: &#34;2026-05-08T14:02:26.577583+00:00&#34;, &#34;value&#34;: 163.9}, {&#34;time&#34;: &#34;2026-05-08T14:02:35.843701+00:00&#34;, &#34;value&#34;: 163.9}, {&#34;time&#34;: &#34;2026-05-13T14:03:25.178247+00:00&#34;, &#34;value&#34;: 163.9}, {&#34;time&#34;: &#34;2026-05-13T14:03:40.551898+00:00&#34;, &#34;value&#34;: 163.93}, {&#34;time&#34;: &#34;2026-05-14T14:01:40.810949+00:00&#34;, &#34;value&#34;: 163.22}, {&#34;time&#34;: &#34;2026-05-14T14:02:14.347319+00:00&#34;, &#34;value&#34;: 163.22}, {&#34;time&#34;: &#34;2026-05-14T14:02:50.628495+00:00&#34;, &#34;value&#34;: 163.22}, {&#34;time&#34;: &#34;2026-05-14T14:03:27.199386+00:00&#34;, &#34;value&#34;: 163.22}, {&#34;time&#34;: &#34;2026-05-15T14:02:12.460308+00:00&#34;, &#34;value&#34;: 163.54}, {&#34;time&#34;: &#34;2026-05-15T14:02:22.509040+00:00&#34;, &#34;value&#34;: 163.54}, {&#34;time&#34;: &#34;2026-05-18T14:02:26.468405+00:00&#34;, &#34;value&#34;: 150.94}, {&#34;time&#34;: &#34;2026-05-18T14:02:44.836908+00:00&#34;, &#34;value&#34;: 157.09}, {&#34;time&#34;: &#34;2026-05-18T14:03:38.967554+00:00&#34;, &#34;value&#34;: 157.09}, {&#34;time&#34;: &#34;2026-05-19T14:03:05.117277+00:00&#34;, &#34;value&#34;: 150.97}, {&#34;time&#34;: &#34;2026-05-19T14:03:30.625786+00:00&#34;, &#34;value&#34;: 150.97}, {&#34;time&#34;: &#34;2026-05-19T14:03:55.041107+00:00&#34;, &#34;value&#34;: 152.27}, {&#34;time&#34;: &#34;2026-05-20T14:01:31.218483+00:00&#34;, &#34;value&#34;: 152.27}, {&#34;time&#34;: &#34;2026-05-20T14:02:09.206898+00:00&#34;, &#34;value&#34;: 152.27}, {&#34;time&#34;: &#34;2026-05-20T14:03:10.158359+00:00&#34;, &#34;value&#34;: 152.27}, {&#34;time&#34;: &#34;2026-05-21T16:04:37.956624+00:00&#34;, &#34;value&#34;: 144.08}, {&#34;time&#34;: &#34;2026-05-21T16:05:14.829428+00:00&#34;, &#34;value&#34;: 142.2}, {&#34;time&#34;: &#34;2026-05-26T14:02:00.654356+00:00&#34;, &#34;value&#34;: 136.73}, {&#34;time&#34;: &#34;2026-05-26T14:02:08.145910+00:00&#34;, &#34;value&#34;: 122.33}, {&#34;time&#34;: &#34;2026-05-26T14:02:15.737550+00:00&#34;, &#34;value&#34;: 122.33}, {&#34;time&#34;: &#34;2026-05-27T14:02:12.858543+00:00&#34;, &#34;value&#34;: 122.33}, {&#34;time&#34;: &#34;2026-05-27T14:03:33.528665+00:00&#34;, &#34;value&#34;: 122.33}, {&#34;time&#34;: &#34;2026-05-28T14:02:50.109918+00:00&#34;, &#34;value&#34;: 118.45}, {&#34;time&#34;: &#34;2026-05-28T14:03:03.531722+00:00&#34;, &#34;value&#34;: 119.22}, {&#34;time&#34;: &#34;2026-05-28T14:03:29.571281+00:00&#34;, &#34;value&#34;: 128.11}, {&#34;time&#34;: &#34;2026-05-28T14:03:43.630088+00:00&#34;, &#34;value&#34;: 128.11}, {&#34;time&#34;: &#34;2026-05-29T14:02:38.053577+00:00&#34;, &#34;value&#34;: 128.42}, {&#34;time&#34;: &#34;2026-05-29T14:03:09.676713+00:00&#34;, &#34;value&#34;: 128.21}, {&#34;time&#34;: &#34;2026-05-29T14:03:45.583193+00:00&#34;, &#34;value&#34;: 128.21}, {&#34;time&#34;: &#34;2026-06-02T14:02:52.281586+00:00&#34;, &#34;value&#34;: 134.41}, {&#34;time&#34;: &#34;2026-06-02T14:03:00.641026+00:00&#34;, &#34;value&#34;: 133.12}, {&#34;time&#34;: &#34;2026-06-02T14:03:08.581137+00:00&#34;, &#34;value&#34;: 133.6}, {&#34;time&#34;: &#34;2026-06-03T14:01:50.072773+00:00&#34;, &#34;value&#34;: 133.6}, {&#34;time&#34;: &#34;2026-06-03T14:02:18.021982+00:00&#34;, &#34;value&#34;: 131.86}, {&#34;time&#34;: &#34;2026-06-03T14:02:26.697628+00:00&#34;, &#34;value&#34;: 134.99}, {&#34;time&#34;: &#34;2026-06-03T14:02:43.726474+00:00&#34;, &#34;value&#34;: 143.9}, {&#34;time&#34;: &#34;2026-06-03T14:02:51.314391+00:00&#34;, &#34;value&#34;: 143.9}, {&#34;time&#34;: &#34;2026-06-08T14:02:59.579875+00:00&#34;, &#34;value&#34;: 140.94}, {&#34;time&#34;: &#34;2026-06-08T14:03:13.248889+00:00&#34;, &#34;value&#34;: 138.84}, {&#34;time&#34;: &#34;2026-06-09T14:02:29.763568+00:00&#34;, &#34;value&#34;: 138.84}, {&#34;time&#34;: &#34;2026-06-10T14:02:54.439557+00:00&#34;, &#34;value&#34;: 138.84}, {&#34;time&#34;: &#34;2026-06-11T14:02:03.548716+00:00&#34;, &#34;value&#34;: 128.02}, {&#34;time&#34;: &#34;2026-06-11T14:02:12.782320+00:00&#34;, &#34;value&#34;: 127.4}, {&#34;time&#34;: &#34;2026-06-11T14:02:28.839574+00:00&#34;, &#34;value&#34;: 113.32}, {&#34;time&#34;: &#34;2026-06-15T14:01:47.612023+00:00&#34;, &#34;value&#34;: 110.13}, {&#34;time&#34;: &#34;2026-06-15T14:02:07.292147+00:00&#34;, &#34;value&#34;: 104.9}, {&#34;time&#34;: &#34;2026-06-15T14:03:11.609226+00:00&#34;, &#34;value&#34;: 104.9}, {&#34;time&#34;: &#34;2026-06-16T14:01:53.543814+00:00&#34;, &#34;value&#34;: 104.9}], &#34;value&#34;: [{&#34;time&#34;: &#34;2026-02-19T18:37:56.888795+00:00&#34;, &#34;value&#34;: 99.51}, {&#34;time&#34;: &#34;2026-02-19T18:38:36.130460+00:00&#34;, &#34;value&#34;: 217.03}, {&#34;time&#34;: &#34;2026-02-19T19:14:32.483513+00:00&#34;, &#34;value&#34;: 293.5}, {&#34;time&#34;: &#34;2026-02-20T20:02:54.413719+00:00&#34;, &#34;value&#34;: 380.62}, {&#34;time&#34;: &#34;2026-03-12T17:29:06.688765+00:00&#34;, &#34;value&#34;: 347.45}, {&#34;time&#34;: &#34;2026-03-17T14:02:15.883760+00:00&#34;, &#34;value&#34;: 347.45}, {&#34;time&#34;: &#34;2026-03-25T14:01:47.789496+00:00&#34;, &#34;value&#34;: 347.45}, {&#34;time&#34;: &#34;2026-04-06T14:01:16.567913+00:00&#34;, &#34;value&#34;: 451.41}, {&#34;time&#34;: &#34;2026-04-14T14:01:16.791231+00:00&#34;, &#34;value&#34;: 635.49}, {&#34;time&#34;: &#34;2026-04-15T14:01:00.387633+00:00&#34;, &#34;value&#34;: 607.17}, {&#34;time&#34;: &#34;2026-04-16T14:02:05.947629+00:00&#34;, &#34;value&#34;: 761.01}, {&#34;time&#34;: &#34;2026-04-17T14:03:57.234639+00:00&#34;, &#34;value&#34;: 837.8}, {&#34;time&#34;: &#34;2026-04-23T14:01:23.713926+00:00&#34;, &#34;value&#34;: 720.28}, {&#34;time&#34;: &#34;2026-04-23T14:01:38.606347+00:00&#34;, &#34;value&#34;: 646.88}, {&#34;time&#34;: &#34;2026-04-23T14:01:52.149038+00:00&#34;, &#34;value&#34;: 771.76}, {&#34;time&#34;: &#34;2026-04-29T14:01:05.179589+00:00&#34;, &#34;value&#34;: 624.97}, {&#34;time&#34;: &#34;2026-04-29T14:01:24.614075+00:00&#34;, &#34;value&#34;: 596.65}, {&#34;time&#34;: &#34;2026-04-30T14:01:48.825059+00:00&#34;, &#34;value&#34;: 596.65}, {&#34;time&#34;: &#34;2026-04-30T14:02:06.856388+00:00&#34;, &#34;value&#34;: 509.53}, {&#34;time&#34;: &#34;2026-04-30T14:02:25.634184+00:00&#34;, &#34;value&#34;: 628.76}, {&#34;time&#34;: &#34;2026-05-01T14:01:06.916486+00:00&#34;, &#34;value&#34;: 524.8}, {&#34;time&#34;: &#34;2026-05-01T14:01:26.835289+00:00&#34;, &#34;value&#34;: 646.63}, {&#34;time&#34;: &#34;2026-05-01T14:01:45.822518+00:00&#34;, &#34;value&#34;: 780.17}, {&#34;time&#34;: &#34;2026-05-07T14:02:03.495906+00:00&#34;, &#34;value&#34;: 539.11}, {&#34;time&#34;: &#34;2026-05-07T14:02:28.487364+00:00&#34;, &#34;value&#34;: 539.11}, {&#34;time&#34;: &#34;2026-05-08T14:02:26.577583+00:00&#34;, &#34;value&#34;: 472.34}, {&#34;time&#34;: &#34;2026-05-08T14:02:35.843701+00:00&#34;, &#34;value&#34;: 541.28}, {&#34;time&#34;: &#34;2026-05-13T14:03:25.178247+00:00&#34;, &#34;value&#34;: 676.36}, {&#34;time&#34;: &#34;2026-05-13T14:03:40.551898+00:00&#34;, &#34;value&#34;: 609.59}, {&#34;time&#34;: &#34;2026-05-14T14:01:40.810949+00:00&#34;, &#34;value&#34;: 541.58}, {&#34;time&#34;: &#34;2026-05-14T14:02:14.347319+00:00&#34;, &#34;value&#34;: 651.46}, {&#34;time&#34;: &#34;2026-05-14T14:02:50.628495+00:00&#34;, &#34;value&#34;: 722.4}, {&#34;time&#34;: &#34;2026-05-14T14:03:27.199386+00:00&#34;, &#34;value&#34;: 897.2}, {&#34;time&#34;: &#34;2026-05-15T14:02:12.460308+00:00&#34;, &#34;value&#34;: 850.58}, {&#34;time&#34;: &#34;2026-05-15T14:02:22.509040+00:00&#34;, &#34;value&#34;: 930.44}, {&#34;time&#34;: &#34;2026-05-18T14:02:26.468405+00:00&#34;, &#34;value&#34;: 755.64}, {&#34;time&#34;: &#34;2026-05-18T14:02:44.836908+00:00&#34;, &#34;value&#34;: 569.29}, {&#34;time&#34;: &#34;2026-05-18T14:03:38.967554+00:00&#34;, &#34;value&#34;: 745.27}, {&#34;time&#34;: &#34;2026-05-19T14:03:05.117277+00:00&#34;, &#34;value&#34;: 681.55}, {&#34;time&#34;: &#34;2026-05-19T14:03:30.625786+00:00&#34;, &#34;value&#34;: 772.86}, {&#34;time&#34;: &#34;2026-05-19T14:03:55.041107+00:00&#34;, &#34;value&#34;: 704.86}, {&#34;time&#34;: &#34;2026-05-20T14:01:31.218483+00:00&#34;, &#34;value&#34;: 730.62}, {&#34;time&#34;: &#34;2026-05-20T14:02:09.206898+00:00&#34;, &#34;value&#34;: 799.29}, {&#34;time&#34;: &#34;2026-05-20T14:03:10.158359+00:00&#34;, &#34;value&#34;: 942.86}, {&#34;time&#34;: &#34;2026-05-21T16:04:37.956624+00:00&#34;, &#34;value&#34;: 900.38}, {&#34;time&#34;: &#34;2026-05-21T16:05:14.829428+00:00&#34;, &#34;value&#34;: 847.87}, {&#34;time&#34;: &#34;2026-05-26T14:02:00.654356+00:00&#34;, &#34;value&#34;: 704.29}, {&#34;time&#34;: &#34;2026-05-26T14:02:08.145910+00:00&#34;, &#34;value&#34;: 559.87}, {&#34;time&#34;: &#34;2026-05-26T14:02:15.737550+00:00&#34;, &#34;value&#34;: 749.91}, {&#34;time&#34;: &#34;2026-05-27T14:02:12.858543+00:00&#34;, &#34;value&#34;: 897.65}, {&#34;time&#34;: &#34;2026-05-27T14:03:33.528665+00:00&#34;, &#34;value&#34;: 942.23}, {&#34;time&#34;: &#34;2026-05-28T14:02:50.109918+00:00&#34;, &#34;value&#34;: 794.49}, {&#34;time&#34;: &#34;2026-05-28T14:03:03.531722+00:00&#34;, &#34;value&#34;: 749.91}, {&#34;time&#34;: &#34;2026-05-28T14:03:29.571281+00:00&#34;, &#34;value&#34;: 726.88}, {&#34;time&#34;: &#34;2026-05-28T14:03:43.630088+00:00&#34;, &#34;value&#34;: 899.61}, {&#34;time&#34;: &#34;2026-05-29T14:02:38.053577+00:00&#34;, &#34;value&#34;: 862.59}, {&#34;time&#34;: &#34;2026-05-29T14:03:09.676713+00:00&#34;, &#34;value&#34;: 835.45}, {&#34;time&#34;: &#34;2026-05-29T14:03:45.583193+00:00&#34;, &#34;value&#34;: 914.29}, {&#34;time&#34;: &#34;2026-06-02T14:02:52.281586+00:00&#34;, &#34;value&#34;: 891.25}, {&#34;time&#34;: &#34;2026-06-02T14:03:00.641026+00:00&#34;, &#34;value&#34;: 851.83}, {&#34;time&#34;: &#34;2026-06-02T14:03:08.581137+00:00&#34;, &#34;value&#34;: 824.68}, {&#34;time&#34;: &#34;2026-06-03T14:01:50.072773+00:00&#34;, &#34;value&#34;: 926.68}, {&#34;time&#34;: &#34;2026-06-03T14:02:18.021982+00:00&#34;, &#34;value&#34;: 887.26}, {&#34;time&#34;: &#34;2026-06-03T14:02:26.697628+00:00&#34;, &#34;value&#34;: 711.28}, {&#34;time&#34;: &#34;2026-06-03T14:02:43.726474+00:00&#34;, &#34;value&#34;: 680.57}, {&#34;time&#34;: &#34;2026-06-03T14:02:51.314391+00:00&#34;, &#34;value&#34;: 865.75}, {&#34;time&#34;: &#34;2026-06-08T14:02:59.579875+00:00&#34;, &#34;value&#34;: 680.57}, {&#34;time&#34;: &#34;2026-06-08T14:03:13.248889+00:00&#34;, &#34;value&#34;: 544.83}, {&#34;time&#34;: &#34;2026-06-09T14:02:29.763568+00:00&#34;, &#34;value&#34;: 606.66}, {&#34;time&#34;: &#34;2026-06-10T14:02:54.439557+00:00&#34;, &#34;value&#34;: 695.13}, {&#34;time&#34;: &#34;2026-06-11T14:02:03.548716+00:00&#34;, &#34;value&#34;: 558.45}, {&#34;time&#34;: &#34;2026-06-11T14:02:12.782320+00:00&#34;, &#34;value&#34;: 496.76}, {&#34;time&#34;: &#34;2026-06-11T14:02:28.839574+00:00&#34;, &#34;value&#34;: 347.57}, {&#34;time&#34;: &#34;2026-06-15T14:01:47.612023+00:00&#34;, &#34;value&#34;: 285.73}, {&#34;time&#34;: &#34;2026-06-15T14:02:07.292147+00:00&#34;, &#34;value&#34;: 197.27}, {&#34;time&#34;: &#34;2026-06-15T14:03:11.609226+00:00&#34;, &#34;value&#34;: 337.36}, {&#34;time&#34;: &#34;2026-06-16T14:01:53.543814+00:00&#34;, &#34;value&#34;: 368.26}]}"
+             data-snapshots="[{&#34;time&#34;: &#34;2026-02-19&#34;, &#34;value&#34;: 498.83}, {&#34;time&#34;: &#34;2026-02-20&#34;, &#34;value&#34;: 496.45}, {&#34;time&#34;: &#34;2026-02-23&#34;, &#34;value&#34;: 488.72}, {&#34;time&#34;: &#34;2026-02-24&#34;, &#34;value&#34;: 499.26}, {&#34;time&#34;: &#34;2026-02-25&#34;, &#34;value&#34;: 501.34}, {&#34;time&#34;: &#34;2026-02-26&#34;, &#34;value&#34;: 487.16}, {&#34;time&#34;: &#34;2026-02-27&#34;, &#34;value&#34;: 484.21}, {&#34;time&#34;: &#34;2026-03-02&#34;, &#34;value&#34;: 492.16}, {&#34;time&#34;: &#34;2026-03-03&#34;, &#34;value&#34;: 495.0}, {&#34;time&#34;: &#34;2026-03-04&#34;, &#34;value&#34;: 492.18}, {&#34;time&#34;: &#34;2026-03-05&#34;, &#34;value&#34;: 506.31}, {&#34;time&#34;: &#34;2026-03-06&#34;, &#34;value&#34;: 508.66}, {&#34;time&#34;: &#34;2026-03-09&#34;, &#34;value&#34;: 506.81}, {&#34;time&#34;: &#34;2026-03-10&#34;, &#34;value&#34;: 499.43}, {&#34;time&#34;: &#34;2026-03-11&#34;, &#34;value&#34;: 514.81}, {&#34;time&#34;: &#34;2026-03-12&#34;, &#34;value&#34;: 516.59}, {&#34;time&#34;: &#34;2026-03-13&#34;, &#34;value&#34;: 506.88}, {&#34;time&#34;: &#34;2026-03-16&#34;, &#34;value&#34;: 503.85}, {&#34;time&#34;: &#34;2026-03-17&#34;, &#34;value&#34;: 504.11}, {&#34;time&#34;: &#34;2026-03-18&#34;, &#34;value&#34;: 493.19}, {&#34;time&#34;: &#34;2026-03-19&#34;, &#34;value&#34;: 482.75}, {&#34;time&#34;: &#34;2026-03-20&#34;, &#34;value&#34;: 479.03}, {&#34;time&#34;: &#34;2026-03-23&#34;, &#34;value&#34;: 490.11}, {&#34;time&#34;: &#34;2026-03-24&#34;, &#34;value&#34;: 514.08}, {&#34;time&#34;: &#34;2026-03-25&#34;, &#34;value&#34;: 722.65}, {&#34;time&#34;: &#34;2026-03-26&#34;, &#34;value&#34;: 715.6}, {&#34;time&#34;: &#34;2026-03-27&#34;, &#34;value&#34;: 710.78}, {&#34;time&#34;: &#34;2026-03-30&#34;, &#34;value&#34;: 706.63}, {&#34;time&#34;: &#34;2026-03-31&#34;, &#34;value&#34;: 1000.97}, {&#34;time&#34;: &#34;2026-04-01&#34;, &#34;value&#34;: 997.52}, {&#34;time&#34;: &#34;2026-04-02&#34;, &#34;value&#34;: 1004.18}, {&#34;time&#34;: &#34;2026-04-06&#34;, &#34;value&#34;: 1001.57}, {&#34;time&#34;: &#34;2026-04-07&#34;, &#34;value&#34;: 995.93}, {&#34;time&#34;: &#34;2026-04-08&#34;, &#34;value&#34;: 1010.58}, {&#34;time&#34;: &#34;2026-04-09&#34;, &#34;value&#34;: 1009.12}, {&#34;time&#34;: &#34;2026-04-10&#34;, &#34;value&#34;: 1012.26}, {&#34;time&#34;: &#34;2026-04-13&#34;, &#34;value&#34;: 1025.11}, {&#34;time&#34;: &#34;2026-04-14&#34;, &#34;value&#34;: 1021.99}, {&#34;time&#34;: &#34;2026-04-15&#34;, &#34;value&#34;: 1021.84}, {&#34;time&#34;: &#34;2026-04-16&#34;, &#34;value&#34;: 1025.03}, {&#34;time&#34;: &#34;2026-04-17&#34;, &#34;value&#34;: 1015.23}, {&#34;time&#34;: &#34;2026-04-20&#34;, &#34;value&#34;: 1015.23}, {&#34;time&#34;: &#34;2026-04-21&#34;, &#34;value&#34;: 1018.16}, {&#34;time&#34;: &#34;2026-04-22&#34;, &#34;value&#34;: 1024.23}, {&#34;time&#34;: &#34;2026-04-23&#34;, &#34;value&#34;: 1021.51}, {&#34;time&#34;: &#34;2026-04-24&#34;, &#34;value&#34;: 1015.14}, {&#34;time&#34;: &#34;2026-04-27&#34;, &#34;value&#34;: 1015.14}, {&#34;time&#34;: &#34;2026-04-28&#34;, &#34;value&#34;: 1015.14}, {&#34;time&#34;: &#34;2026-04-29&#34;, &#34;value&#34;: 1029.35}, {&#34;time&#34;: &#34;2026-04-30&#34;, &#34;value&#34;: 1014.4}, {&#34;time&#34;: &#34;2026-05-01&#34;, &#34;value&#34;: 1038.64}, {&#34;time&#34;: &#34;2026-05-04&#34;, &#34;value&#34;: 1038.64}, {&#34;time&#34;: &#34;2026-05-05&#34;, &#34;value&#34;: 1038.64}, {&#34;time&#34;: &#34;2026-05-06&#34;, &#34;value&#34;: 1038.64}, {&#34;time&#34;: &#34;2026-05-07&#34;, &#34;value&#34;: 1024.23}, {&#34;time&#34;: &#34;2026-05-08&#34;, &#34;value&#34;: 1017.38}, {&#34;time&#34;: &#34;2026-05-11&#34;, &#34;value&#34;: 1017.38}, {&#34;time&#34;: &#34;2026-05-12&#34;, &#34;value&#34;: 1017.38}, {&#34;time&#34;: &#34;2026-05-13&#34;, &#34;value&#34;: 992.44}, {&#34;time&#34;: &#34;2026-05-14&#34;, &#34;value&#34;: 1004.23}, {&#34;time&#34;: &#34;2026-05-15&#34;, &#34;value&#34;: 1004.73}, {&#34;time&#34;: &#34;2026-05-18&#34;, &#34;value&#34;: 984.54}, {&#34;time&#34;: &#34;2026-05-19&#34;, &#34;value&#34;: 968.21}, {&#34;time&#34;: &#34;2026-05-20&#34;, &#34;value&#34;: 967.63}, {&#34;time&#34;: &#34;2026-05-21&#34;, &#34;value&#34;: 966.71}, {&#34;time&#34;: &#34;2026-05-22&#34;, &#34;value&#34;: 966.71}, {&#34;time&#34;: &#34;2026-05-25&#34;, &#34;value&#34;: 981.51}, {&#34;time&#34;: &#34;2026-05-26&#34;, &#34;value&#34;: 986.14}, {&#34;time&#34;: &#34;2026-05-27&#34;, &#34;value&#34;: 984.23}, {&#34;time&#34;: &#34;2026-05-28&#34;, &#34;value&#34;: 966.31}, {&#34;time&#34;: &#34;2026-05-29&#34;, &#34;value&#34;: 961.91}, {&#34;time&#34;: &#34;2026-06-01&#34;, &#34;value&#34;: 961.91}, {&#34;time&#34;: &#34;2026-06-02&#34;, &#34;value&#34;: 955.38}, {&#34;time&#34;: &#34;2026-06-03&#34;, &#34;value&#34;: 930.54}, {&#34;time&#34;: &#34;2026-06-04&#34;, &#34;value&#34;: 930.54}, {&#34;time&#34;: &#34;2026-06-05&#34;, &#34;value&#34;: 930.54}, {&#34;time&#34;: &#34;2026-06-08&#34;, &#34;value&#34;: 920.88}, {&#34;time&#34;: &#34;2026-06-09&#34;, &#34;value&#34;: 927.52}, {&#34;time&#34;: &#34;2026-06-10&#34;, &#34;value&#34;: 920.47}, {&#34;time&#34;: &#34;2026-06-11&#34;, &#34;value&#34;: 912.59}, {&#34;time&#34;: &#34;2026-06-12&#34;, &#34;value&#34;: 912.59}, {&#34;time&#34;: &#34;2026-06-15&#34;, &#34;value&#34;: 904.89}, {&#34;time&#34;: &#34;2026-06-16&#34;, &#34;value&#34;: 902.32}]"></div>
+    </section>
+</div>
+
+<section style="margin-top: 2rem;">
+    <h3 class="group__label">Trade Log</h3>
+
+
+    <div class="col-headers col-headers--trades">
+        <span>Time</span>
+        <span>Ticker</span>
+        <span>Action</span>
+        <span>Qty</span>
+        <span>Price</span>
+        <span>Status</span>
+    </div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-16 14:01</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">3</span>
+        <span class="mono">$10.30</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">OBE is a pure-play Canadian oil producer with strong Q1 2026 operating income ($29.6M) despite net losses due to non-operating expenses. With ongoing Iran tensions, US military action against oil tank...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">OBE is a pure-play Canadian oil producer with strong Q1 2026 operating income ($29.6M) despite net losses due to non-operating expenses. With ongoing Iran tensions, US military action against oil tankers, and UK seizure of Russian shadow tanker, oil supply disruptions are real and continuing. OBE&#39;s valuation appears attractive relative to peers, and it would provide direct exposure to oil price upside from continued geopolitical risk premium. The current price of $10.27 is below its 52-week high of $14.59, providing a margin of safety.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-16 14:01</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">17</span>
+        <span class="mono">$10.30</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">OBE is a pure-play Canadian oil producer with strong Q1 2026 operating income ($29.6M) despite net losses due to non-operating expenses. With ongoing Iran tensions, US military action against oil tank...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">OBE is a pure-play Canadian oil producer with strong Q1 2026 operating income ($29.6M) despite net losses due to non-operating expenses. With ongoing Iran tensions, US military action against oil tankers, and UK seizure of Russian shadow tanker, oil supply disruptions are real and continuing. OBE&#39;s valuation appears attractive relative to peers, and it would provide direct exposure to oil price upside from continued geopolitical risk premium. The current price of $10.27 is below its 52-week high of $14.59, providing a margin of safety.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-15 14:03</span>
+        <span class="trade-row__ticker">SMMT</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">10</span>
+        <span class="mono">$14.00</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SMMT has massive insider buying ($100.7M by 3 insiders) at $13.13, and is currently trading at $14.01, showing strong insider confidence. The stock is up 0.000016% today, suggesting the market hasn&#39;t ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SMMT has massive insider buying ($100.7M by 3 insiders) at $13.13, and is currently trading at $14.01, showing strong insider confidence. The stock is up 0.000016% today, suggesting the market hasn&#39;t yet priced in this insider confidence. A 10-share position ($140.10) keeps commission drag at 1.43%, well within our 5% threshold.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-15 14:02</span>
+        <span class="trade-row__ticker">BETR</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">5</span>
+        <span class="mono">$29.89</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">BETR has massive insider buying ($8.4M by 5 insiders) at $29.46, and is currently trading at $29.89, showing strong insider confidence. The stock is up 12.75% today, indicating positive market sentime...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">BETR has massive insider buying ($8.4M by 5 insiders) at $29.46, and is currently trading at $29.89, showing strong insider confidence. The stock is up 12.75% today, indicating positive market sentiment. A 5-share position ($149.45) keeps commission drag at 1.34%, well within our 5% threshold.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-15 14:02</span>
+        <span class="trade-row__ticker">MOBI</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">10</span>
+        <span class="mono">$11.50</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">MOBI has massive insider buying ($19.1M by 7 insiders) at $14.99, representing 30% upside from current price of $11.50. This is a strong signal of insider confidence in the company&#39;s prospects. As a m...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">MOBI has massive insider buying ($19.1M by 7 insiders) at $14.99, representing 30% upside from current price of $11.50. This is a strong signal of insider confidence in the company&#39;s prospects. As a medical device company, MOBI benefits from the growing healthcare technology sector. A 10-share position ($115) keeps commission drag at 1.74%, well within our 5% threshold.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-15 14:02</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">8</span>
+        <span class="mono">$10.41</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">Geopolitical thesis significantly weakened by conflicting Iran peace deal signals (Trump claims deal Sunday but CNBC reports deal in question as Israel strikes Lebanon). Updated thesis has decreased c...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">Geopolitical thesis significantly weakened by conflicting Iran peace deal signals (Trump claims deal Sunday but CNBC reports deal in question as Israel strikes Lebanon). Updated thesis has decreased conviction and lowered target ($13.5 from $15). With unknown earnings date (violates 7-day rule) and -7.1% unrealized loss, risk/reward is unfavorable. Full exit frees capital for higher-conviction opportunities that meet commission requirements.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-15 14:01</span>
+        <span class="trade-row__ticker">SU</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$58.58</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">Geopolitical thesis weakened by conflicting Iran peace deal signals (Trump claims deal Sunday but CNBC reports deal in question as Israel strikes Lebanon). Updated thesis has decreased conviction and ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">Geopolitical thesis weakened by conflicting Iran peace deal signals (Trump claims deal Sunday but CNBC reports deal in question as Israel strikes Lebanon). Updated thesis has decreased conviction and lowered target ($70 from $75). Current price ($58.55) is very close to new stop-loss ($57.5), making position highly vulnerable. With unknown earnings date (violates 7-day rule) and -7.9% unrealized loss, risk/reward is unfavorable. Full exit frees capital for higher-conviction opportunities.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-15 14:01</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">4</span>
+        <span class="mono">$10.39</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">Geopolitical thesis weakened by conflicting Iran peace deal signals (Trump claims deal Sunday but CNBC reports deal in question as Israel strikes Lebanon). Updated thesis has decreased conviction and ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">Geopolitical thesis weakened by conflicting Iran peace deal signals (Trump claims deal Sunday but CNBC reports deal in question as Israel strikes Lebanon). Updated thesis has decreased conviction and lowered target ($13.5 from $15). With unknown earnings date (violates 7-day rule) and -7.1% unrealized loss, risk/reward is unfavorable. Trimming position frees capital for higher-conviction opportunities while maintaining some exposure to potential upside.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-11 14:02</span>
+        <span class="trade-row__ticker">BUR</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">32</span>
+        <span class="mono">$4.22</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">BUR&#39;s financials show consistent deterioration with negative operating income (-$53.7M) and net losses in recent quarters. Q4 2025 results show -$53.7M operating income and -$37.5M net income, indicat...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">BUR&#39;s financials show consistent deterioration with negative operating income (-$53.7M) and net losses in recent quarters. Q4 2025 results show -$53.7M operating income and -$37.5M net income, indicating fundamental issues beyond market sentiment. The original thesis about strong risk-adjusted returns is invalidated by this financial data.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-11 14:02</span>
+        <span class="trade-row__ticker">VISN</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">5</span>
+        <span class="mono">$12.22</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">VISN&#39;s Q1 2026 shows -$1.5B net loss despite $471.8M revenue, suggesting accounting issues. Current price ($12.205) is approaching the updated $13.5 target, and with the thesis weakened and financial ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">VISN&#39;s Q1 2026 shows -$1.5B net loss despite $471.8M revenue, suggesting accounting issues. Current price ($12.205) is approaching the updated $13.5 target, and with the thesis weakened and financial concerns, trimming 45% of the position is appropriate risk management.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-11 14:01</span>
+        <span class="trade-row__ticker">GPN</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$62.78</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">GPN&#39;s Q1 2026 results show catastrophic net income of -$1.8B despite $2.97B revenue, indicating serious accounting or operational issues that invalidate the original thesis. This fundamental deteriora...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">GPN&#39;s Q1 2026 results show catastrophic net income of -$1.8B despite $2.97B revenue, indicating serious accounting or operational issues that invalidate the original thesis. This fundamental deterioration makes the position unacceptable to hold, failing the &#39;would I buy today&#39; test at current price ($62.65).</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-11 14:01</span>
+        <span class="trade-row__ticker">BUR</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">32</span>
+        <span class="mono">$4.21</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">BUR&#39;s financials show consistent deterioration with negative operating income (-$53.7M) and net losses in recent quarters. Q4 2025 results show -$53.7M operating income and -$37.5M net income, indicat...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">BUR&#39;s financials show consistent deterioration with negative operating income (-$53.7M) and net losses in recent quarters. Q4 2025 results show -$53.7M operating income and -$37.5M net income, indicating fundamental issues beyond market sentiment. The original thesis about strong risk-adjusted returns is invalidated by this financial data.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-10 14:02</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">8</span>
+        <span class="mono">$11.05</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">OBE is a pure-play Canadian oil producer with strong fundamentals and direct exposure to oil price movements. With Iran-Israel missile exchanges escalating and Strait of Hormuz risk elevated, oil pric...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">OBE is a pure-play Canadian oil producer with strong fundamentals and direct exposure to oil price movements. With Iran-Israel missile exchanges escalating and Strait of Hormuz risk elevated, oil prices have significant upside potential. OBE&#39;s current price of $11.07 offers compelling entry point relative to $14.00 target price (26.5% upside) with $9.00 stop loss (18.7% downside). This provides asymmetric risk/reward profile perfectly aligned with our geopolitical energy theme.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-10 14:02</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">15</span>
+        <span class="mono">$11.06</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">OBE is a pure-play Canadian oil producer with strong fundamentals and direct exposure to oil price movements. With Iran-Israel missile exchanges escalating and Strait of Hormuz risk elevated, oil pric...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">OBE is a pure-play Canadian oil producer with strong fundamentals and direct exposure to oil price movements. With Iran-Israel missile exchanges escalating and Strait of Hormuz risk elevated, oil prices have significant upside potential. OBE&#39;s current price of $11.07 offers compelling entry point relative to $14.00 target price (26.5% upside) with $9.00 stop loss (18.7% downside). This provides asymmetric risk/reward profile perfectly aligned with our geopolitical energy theme.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-09 14:01</span>
+        <span class="trade-row__ticker">SU</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$61.83</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SU is Canada&#39;s largest integrated energy company with direct exposure to oil price increases. With US-Iran conflict escalating at the Strait of Hormuz (20% of global oil supply), oil prices are likely...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SU is Canada&#39;s largest integrated energy company with direct exposure to oil price increases. With US-Iran conflict escalating at the Strait of Hormuz (20% of global oil supply), oil prices are likely to spike. SU has strong fundamentals: $15.4B Q1 revenue, $2.9B operating income, $2.1B net income, and $4.76B EBITDA. Trading at ~4.8x revenue is reasonable for integrated energy. This positions the portfolio for geopolitical tailwinds while maintaining quality.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-09 14:01</span>
+        <span class="trade-row__ticker">SU</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$61.80</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SU is Canada&#39;s largest integrated energy company with direct exposure to oil price increases. With US-Iran conflict escalating at the Strait of Hormuz (20% of global oil supply), oil prices are likely...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SU is Canada&#39;s largest integrated energy company with direct exposure to oil price increases. With US-Iran conflict escalating at the Strait of Hormuz (20% of global oil supply), oil prices are likely to spike. SU has strong fundamentals: $15.4B Q1 revenue, $2.9B operating income, $2.1B net income, and $4.76B EBITDA. Trading at ~4.8x revenue is reasonable for integrated energy. This positions the portfolio for geopolitical tailwinds while maintaining quality.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-08 14:03</span>
+        <span class="trade-row__ticker">SBLK</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">5</span>
+        <span class="mono">$26.74</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SBLK faces existential risk from the Strait of Hormuz blockade threat. With Iran threatening to completely block this critical oil chokepoint and US-Iran military escalation continuing, shipping route...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SBLK faces existential risk from the Strait of Hormuz blockade threat. With Iran threatening to completely block this critical oil chokepoint and US-Iran military escalation continuing, shipping routes are at extreme risk. News reports confirm shipping traffic has dropped to 36 ships/week from 130/day pre-war. SBLK&#39;s business model depends on global trade routes, and a complete Hormuz blockade would severely impact its operations. The stock is down 2.2% to $26.69 and the geopolitical risk has moved from potential to highly probable.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-08 14:02</span>
+        <span class="trade-row__ticker">GRNT</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">37</span>
+        <span class="mono">$4.92</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">GRNT faces substantial doubt about its ability to continue as a going concern with high debt maturity risk in 2027 and recent auditor change. In the current extreme geopolitical environment with Strai...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">GRNT faces substantial doubt about its ability to continue as a going concern with high debt maturity risk in 2027 and recent auditor change. In the current extreme geopolitical environment with Strait of Hormuz blockade likely to cause oil price volatility and credit market stress, GRNT&#39;s high leverage makes it extremely vulnerable. The stock is trading at $4.92, down 2.2% from our cost basis, and the going-concern warning represents an existential risk that violates our risk management principles.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-08 14:02</span>
+        <span class="trade-row__ticker">GRNT</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">37</span>
+        <span class="mono">$4.93</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">GRNT faces substantial doubt about its ability to continue as a going concern with high debt maturity risk in 2027 and recent auditor change. In the current extreme geopolitical environment with Strai...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">GRNT faces substantial doubt about its ability to continue as a going concern with high debt maturity risk in 2027 and recent auditor change. In the current extreme geopolitical environment with Strait of Hormuz blockade likely to cause oil price volatility and credit market stress, GRNT&#39;s high leverage makes it extremely vulnerable. The stock is trading at $4.92, down 2.2% from our cost basis, and the going-concern warning represents an existential risk that violates our risk management principles.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-03 14:02</span>
+        <span class="trade-row__ticker">GRNT</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">37</span>
+        <span class="mono">$5.00</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">GRNT presents a high-conviction energy opportunity aligned with current US-Iran geopolitical tensions. With $919K insider buying by 6 insiders at $5.36, the stock is currently trading at $4.995 (6.8% ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">GRNT presents a high-conviction energy opportunity aligned with current US-Iran geopolitical tensions. With $919K insider buying by 6 insiders at $5.36, the stock is currently trading at $4.995 (6.8% below insider purchase price), creating an attractive entry point. The company operates in oil &amp; gas exploration with exposure to potential oil price premiums from Middle East tensions. GRNT has a low beta (0.228) and strong insider conviction, making it a defensive energy play with asymmetric upside.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-03 14:02</span>
+        <span class="trade-row__ticker">RILY</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">4</span>
+        <span class="mono">$9.91</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">RILY is currently a stub position at 4.1% of portfolio (below 5% minimum), requiring exit to eliminate monitoring cost. With +27.0% performance, exiting the full position locks in gains and generates ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">RILY is currently a stub position at 4.1% of portfolio (below 5% minimum), requiring exit to eliminate monitoring cost. With +27.0% performance, exiting the full position locks in gains and generates cash for higher-conviction opportunities. The position has unknown earnings risk, making full exit the appropriate risk management action.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-03 14:02</span>
+        <span class="trade-row__ticker">POOL</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$179.50</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">POOL is the largest portfolio position at 18.8% and requires risk management. With +1.4% performance and unknown earnings date, selling 1 share reduces concentration while generating cash. The cash wi...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">POOL is the largest portfolio position at 18.8% and requires risk management. With +1.4% performance and unknown earnings date, selling 1 share reduces concentration while generating cash. The cash will be redeployed to higher-conviction opportunities aligned with current geopolitical risks (energy) and sector rotation (insurance). This addresses both cash constraint and position sizing discipline.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-03 14:02</span>
+        <span class="trade-row__ticker">ROCK</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$37.73</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ROCK requires thesis review and position size adjustment. Currently at 3.9% of portfolio (below 5% minimum), it&#39;s a stub position that doesn&#39;t justify monitoring cost. The $39.81 entry price is above ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ROCK requires thesis review and position size adjustment. Currently at 3.9% of portfolio (below 5% minimum), it&#39;s a stub position that doesn&#39;t justify monitoring cost. The $39.81 entry price is above current $37.98 price (-4.7% decline), but with strong insider buying ($1.56M by 4 insiders) and Substack $100 target (2.5x upside), the thesis remains intact. Selling 1 share reduces the position to 2 shares while maintaining exposure to the solar construction thesis.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-03 14:01</span>
+        <span class="trade-row__ticker">RLI</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$51.04</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">RLI represents a high-conviction insurance sector rotation opportunity with strong fundamentals. Trading at $51.005 with Q1 2026 net income of $54.89M and $0.60 EPS, RLI shows consistent profitability...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">RLI represents a high-conviction insurance sector rotation opportunity with strong fundamentals. Trading at $51.005 with Q1 2026 net income of $54.89M and $0.60 EPS, RLI shows consistent profitability in the property &amp; casualty insurance space. With a low beta (0.383) and $4.66 dividend, it provides defensive characteristics while benefiting from sector rotation signals. The recent $859K insider buying cluster confirms management&#39;s confidence in the company&#39;s prospects.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-03 14:01</span>
+        <span class="trade-row__ticker">GRNT</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">20</span>
+        <span class="mono">$5.00</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">GRNT presents a high-conviction energy opportunity aligned with current US-Iran geopolitical tensions. With $919K insider buying by 6 insiders at $5.36, the stock is currently trading at $4.995 (6.8% ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">GRNT presents a high-conviction energy opportunity aligned with current US-Iran geopolitical tensions. With $919K insider buying by 6 insiders at $5.36, the stock is currently trading at $4.995 (6.8% below insider purchase price), creating an attractive entry point. The company operates in oil &amp; gas exploration with exposure to potential oil price premiums from Middle East tensions. GRNT has a low beta (0.228) and strong insider conviction, making it a defensive energy play with asymmetric upside.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-02 14:03</span>
+        <span class="trade-row__ticker">SBLK</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$27.65</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SBLK has performed moderately well (+1.6% unrealized PnL) and is our second largest position at 17.5% of portfolio. Selling 1 share (16.7% of position) will generate approximately $27.73 in cash, incr...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SBLK has performed moderately well (+1.6% unrealized PnL) and is our second largest position at 17.5% of portfolio. Selling 1 share (16.7% of position) will generate approximately $27.73 in cash, increasing portfolio cash to ~13.5% and reducing concentration risk. This addresses the portfolio rebalancing imperative while maintaining exposure to this core holding.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-02 14:02</span>
+        <span class="trade-row__ticker">ROCK</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$38.18</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ROCK has declined -4.1% from entry price ($39.81 to $38.16) and the Substack $100 target remains valid but distant. With 6 positions lacking formal theses and critical cash constraints, selling 1 shar...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ROCK has declined -4.1% from entry price ($39.81 to $38.16) and the Substack $100 target remains valid but distant. With 6 positions lacking formal theses and critical cash constraints, selling 1 share (50% of position) will generate $38.16 in cash, increasing portfolio cash to ~11.0% and addressing the discipline violation. This is a tactical cash generation move, not thesis invalidation, as the $100 target remains intact.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-02 14:02</span>
+        <span class="trade-row__ticker">RILY</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">3</span>
+        <span class="mono">$9.73</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">RILY has performed exceptionally well (+26.0% unrealized PnL) and represents the largest source of portfolio alpha. Selling 3 shares (42.9% of position) will generate approximately $29.31 in cash, inc...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">RILY has performed exceptionally well (+26.0% unrealized PnL) and represents the largest source of portfolio alpha. Selling 3 shares (42.9% of position) will generate approximately $29.31 in cash, increasing portfolio cash from 3.8% to ~7.0% and reducing concentration risk while maintaining exposure to this strong performer. This aligns with the portfolio rebalancing imperative and meets the minimum trade size requirement.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-06-02 14:01</span>
+        <span class="trade-row__ticker">POOL</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$178.92</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">POOL has performed well (+1.4% unrealized PnL) and is our largest position at 19.0% of portfolio. Trimming 0.25 shares (25% of position) will generate approximately $44.86 in cash, increasing portfoli...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">POOL has performed well (+1.4% unrealized PnL) and is our largest position at 19.0% of portfolio. Trimming 0.25 shares (25% of position) will generate approximately $44.86 in cash, increasing portfolio cash to ~10.5% and reducing concentration risk. This addresses the portfolio rebalancing imperative while maintaining exposure to this core holding.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-29 14:03</span>
+        <span class="trade-row__ticker">ROCK</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$39.44</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ROCK has strong fundamentals with 12% revenue growth, margin expansion, and raised guidance. The substack $100 target represents 2.5x upside and is confirmed by the research showing sustained demand i...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ROCK has strong fundamentals with 12% revenue growth, margin expansion, and raised guidance. The substack $100 target represents 2.5x upside and is confirmed by the research showing sustained demand in solar and construction end-markets. We&#39;re buying 2 shares to establish a meaningful position while maintaining risk management discipline.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-29 14:03</span>
+        <span class="trade-row__ticker">SBLK</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">1</span>
+        <span class="mono">$26.96</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SBLK is our largest position at 19.6% of portfolio, exceeding our 20% maximum but violating our target of ~12.5%. We need to reduce concentration for risk management while maintaining our thesis that ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SBLK is our largest position at 19.6% of portfolio, exceeding our 20% maximum but violating our target of ~12.5%. We need to reduce concentration for risk management while maintaining our thesis that SBLK benefits from global trade normalization and shipping demand.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-29 14:02</span>
+        <span class="trade-row__ticker">VISN</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">3</span>
+        <span class="mono">$12.44</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">VISN is our second largest position at 18.0% of portfolio and has concerning financials with negative $1.5B net income in Q1 2026. We need to reduce concentration and address the fundamental weakness ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">VISN is our second largest position at 18.0% of portfolio and has concerning financials with negative $1.5B net income in Q1 2026. We need to reduce concentration and address the fundamental weakness while raising cash for better opportunities.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-29 14:01</span>
+        <span class="trade-row__ticker">SBLK</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$26.95</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SBLK is our largest position at 19.5% of portfolio, exceeding our 20% maximum but violating our target of ~12.5%. We need to reduce concentration for risk management while maintaining our thesis that ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SBLK is our largest position at 19.5% of portfolio, exceeding our 20% maximum but violating our target of ~12.5%. We need to reduce concentration for risk management while maintaining our thesis that SBLK benefits from global trade normalization and shipping demand.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-28 14:03</span>
+        <span class="trade-row__ticker">VISN</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">14</span>
+        <span class="mono">$12.34</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">VISN is trading at $12.32, well below its $14 target price from Substack. The company is a communications infrastructure provider with strong fundamentals ($471.8M revenue in Q1 2026) and benefits fro...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">VISN is trading at $12.32, well below its $14 target price from Substack. The company is a communications infrastructure provider with strong fundamentals ($471.8M revenue in Q1 2026) and benefits from the DOCSIS 4.0 upgrade tailwind. This represents an attractive entry point with asymmetric risk/reward.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-28 14:03</span>
+        <span class="trade-row__ticker">RILY</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">3</span>
+        <span class="mono">$10.71</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">RILY has performed exceptionally well (+37.7%), representing 11.0% of the portfolio. To address the portfolio&#39;s -11.0% underperformance crisis, we need to deploy capital into new opportunities like VI...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">RILY has performed exceptionally well (+37.7%), representing 11.0% of the portfolio. To address the portfolio&#39;s -11.0% underperformance crisis, we need to deploy capital into new opportunities like VISN and OSB. Trimming 3 shares of RILY will free up approximately $32 to fund these new positions while maintaining a meaningful RILY position.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-28 14:02</span>
+        <span class="trade-row__ticker">DNA</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">5</span>
+        <span class="mono">$9.06</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">DNA is a stub position at 4.5% of the portfolio, below the 5% minimum threshold. Stub positions below 5% do not justify monitoring cost and should be exited to free up capital for more promising oppor...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">DNA is a stub position at 4.5% of the portfolio, below the 5% minimum threshold. Stub positions below 5% do not justify monitoring cost and should be exited to free up capital for more promising opportunities. The portfolio needs optimization to address the -11.0% underperformance crisis.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-28 14:02</span>
+        <span class="trade-row__ticker">ESTA</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$72.37</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ESTA has breached its stop-loss of $180.00, with current price at $71.995. The stop-loss breach triggers the default action to sell unless overwhelming new fundamental evidence is found. No such evide...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ESTA has breached its stop-loss of $180.00, with current price at $71.995. The stop-loss breach triggers the default action to sell unless overwhelming new fundamental evidence is found. No such evidence has been identified in current analysis. The updated thesis indicates the FDA approval catalyst has not materialized as expected, invalidating the original investment premise.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-28 14:01</span>
+        <span class="trade-row__ticker">ESTA</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$71.98</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ESTA has breached its stop-loss of $180.00, with current price at $71.995. The stop-loss breach triggers the default action to sell unless overwhelming new fundamental evidence is found. No such evide...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ESTA has breached its stop-loss of $180.00, with current price at $71.995. The stop-loss breach triggers the default action to sell unless overwhelming new fundamental evidence is found. No such evidence has been identified in current analysis. The thesis has been invalidated by price action approaching the stop-loss level, and the position should be exited to preserve capital.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-27 14:03</span>
+        <span class="trade-row__ticker">DNA</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">5</span>
+        <span class="mono">$8.93</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">DNA represents healthcare/biotech exposure with potential upside from synthetic biology platform. Current valuation appears reasonable given growth potential and market divergence creates opportunity.</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">DNA represents healthcare/biotech exposure with potential upside from synthetic biology platform. Current valuation appears reasonable given growth potential and market divergence creates opportunity.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-27 14:03</span>
+        <span class="trade-row__ticker">PLBY</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">38</span>
+        <span class="mono">$1.35</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">PLBY has a bullish Yellowbrick thesis with 120% upside to $2.90. The company is positioned to benefit from digital media trends and has a strong brand. With current cash of $51.93, buying 38 shares at...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">PLBY has a bullish Yellowbrick thesis with 120% upside to $2.90. The company is positioned to benefit from digital media trends and has a strong brand. With current cash of $51.93, buying 38 shares at $1.345 represents appropriate position sizing.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-27 14:02</span>
+        <span class="trade-row__ticker">BRCB</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">6</span>
+        <span class="mono">$8.39</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">BRCB has extraordinary insider buying of $73.3M by 3 insiders, indicating massive conviction in the company&#39;s growth prospects. This represents a rare opportunity with asymmetric risk/reward. The coff...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">BRCB has extraordinary insider buying of $73.3M by 3 insiders, indicating massive conviction in the company&#39;s growth prospects. This represents a rare opportunity with asymmetric risk/reward. The coffee bar franchise business appears to be at an inflection point for expansion.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-27 14:01</span>
+        <span class="trade-row__ticker">ESTA</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$73.15</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ESTA represents healthcare diversification with strong Ozempic tailwind catalyst and FDA approval catalyst. Current valuation discount provides attractive risk/reward. Portfolio needs sector diversifi...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ESTA represents healthcare diversification with strong Ozempic tailwind catalyst and FDA approval catalyst. Current valuation discount provides attractive risk/reward. Portfolio needs sector diversification beyond energy exposure.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-27 14:01</span>
+        <span class="trade-row__ticker">ESTA</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">2</span>
+        <span class="mono">$73.15</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">ESTA represents healthcare diversification with strong Ozempic tailwind catalyst and FDA approval catalyst. Current valuation discount provides attractive risk/reward. Portfolio needs sector diversifi...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">ESTA represents healthcare diversification with strong Ozempic tailwind catalyst and FDA approval catalyst. Current valuation discount provides attractive risk/reward. Portfolio needs sector diversification beyond energy exposure.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-26 14:02</span>
+        <span class="trade-row__ticker">BRCB</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">25</span>
+        <span class="mono">$7.36</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">BRCB shows strong fundamentals with $55.5M Q1 2026 revenue and improving profitability. The massive insider buying ($73.3M by 3 insiders) indicates exceptional institutional conviction. This provides ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">BRCB shows strong fundamentals with $55.5M Q1 2026 revenue and improving profitability. The massive insider buying ($73.3M by 3 insiders) indicates exceptional institutional conviction. This provides diversification away from energy exposure and represents a high-conviction opportunity that fits within available capital constraints.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-26 14:02</span>
+        <span class="trade-row__ticker">SBLK</span>
+        <span class="trade-row__action trade-row__action--buy">
+            BUY
+        </span>
+        <span class="mono">7</span>
+        <span class="mono">$27.13</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">SBLK is the top watchlist candidate from Yellowbrick - Star Bulk Carriers with 145-vessel dry bulk fleet, scrap value $975M &gt; gross debt $951M, high operating leverage. This provides perfect portfolio...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">SBLK is the top watchlist candidate from Yellowbrick - Star Bulk Carriers with 145-vessel dry bulk fleet, scrap value $975M &gt; gross debt $951M, high operating leverage. This provides perfect portfolio diversification away from energy exposure and geopolitical risk. With the Strait of Hormuz reopening, shipping sector could benefit from increased trade flows. Current portfolio needs sector diversification away from oil exposure.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-26 14:02</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">11</span>
+        <span class="mono">$11.84</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">OBE&#39;s summer travel thesis remains but faces significant headwind from the Strait of Hormuz reopening, which would pressure oil premium and create a lower oil price environment. The portfolio is overw...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">OBE&#39;s summer travel thesis remains but faces significant headwind from the Strait of Hormuz reopening, which would pressure oil premium and create a lower oil price environment. The portfolio is overweight energy (27.6% combined OBE+DMLP) and faces geopolitical uncertainty. With RILY as the sole strong performer, reducing energy concentration improves portfolio diversification and risk management.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-26 14:01</span>
+        <span class="trade-row__ticker">DMLP</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">5</span>
+        <span class="mono">$27.79</span>
+        <span class="trade-row__status">filled</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">DMLP&#39;s oil leverage thesis is being materially undermined by Trump&#39;s announcement that the Strait of Hormuz deal is &#39;largely negotiated.&#39; This represents a fundamental shift in the investment thesis, ...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">DMLP&#39;s oil leverage thesis is being materially undermined by Trump&#39;s announcement that the Strait of Hormuz deal is &#39;largely negotiated.&#39; This represents a fundamental shift in the investment thesis, not just price movement. The core catalyst for DMLP&#39;s valuation premium (oil conflict risk) is being removed. Market implications: Oil premium compression likely, pressure on energy stocks with conflict premium exposure. With the portfolio overweight in energy (27.6% combined OBE+DMLP), reducing this position addresses sector concentration risk.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-26 14:01</span>
+        <span class="trade-row__ticker">AENT</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">3</span>
+        <span class="mono">$6.49</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">AENT is a stub position at 1.9% (below 5% minimum threshold) and is approaching its stop-loss of $5.95 ($6.485 current price is only $0.535 above stop). The position is too small to justify monitoring...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">AENT is a stub position at 1.9% (below 5% minimum threshold) and is approaching its stop-loss of $5.95 ($6.485 current price is only $0.535 above stop). The position is too small to justify monitoring cost while approaching a critical threshold. With no earnings date found in system and the portfolio crisis requiring urgent optimization, selling this stub position frees up capital for higher-conviction opportunities and eliminates a monitoring burden.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-26 14:00</span>
+        <span class="trade-row__ticker">OBE</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">11</span>
+        <span class="mono">$11.83</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">OBE&#39;s summer travel thesis remains but faces significant headwind from the Strait of Hormuz reopening, which would pressure oil premium and create a lower oil price environment. The portfolio is overw...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">OBE&#39;s summer travel thesis remains but faces significant headwind from the Strait of Hormuz reopening, which would pressure oil premium and create a lower oil price environment. The portfolio is overweight energy (27.6% combined OBE+DMLP) and faces geopolitical uncertainty. With RILY as the sole strong performer, reducing energy concentration improves portfolio diversification and risk management.</div>
+    <div class="trade-row trade-row--expandable">
+        <span class="trade-row__time">2026-05-25 14:02</span>
+        <span class="trade-row__ticker">AENT</span>
+        <span class="trade-row__action trade-row__action--sell">
+            SELL
+        </span>
+        <span class="mono">3</span>
+        <span class="mono">$6.16</span>
+        <span class="trade-row__status">rejected</span>
+    </div>
+    <div class="trade-row__reasoning trade-row__reasoning--preview">AENT is a stub position at only 1.9% of portfolio value, below the 5% minimum meaningful size requirement. Stub positions do not justify monitoring cost and waste attention that should be focused on h...</div>
+    <div class="trade-row__reasoning trade-row__reasoning--full">AENT is a stub position at only 1.9% of portfolio value, below the 5% minimum meaningful size requirement. Stub positions do not justify monitoring cost and waste attention that should be focused on higher-conviction opportunities. With the portfolio in crisis (-12.53% alpha underperformance vs SPY), capital should be redeployed to higher-conviction opportunities. Selling AENT frees up $18.48 for redeployment to address the portfolio crisis.</div>
+
+    <div class="pagination">
+        <span class="pagination__info">Page 1</span>
+        <span class="pagination__link">Older &rarr;</span>
+    </div>
+
+</section>
+
+
+        </main>
+
+        <footer class="footer">
+            <span>&copy; Valhalla Capital 2026</span>
+            <button class="footer__sound-toggle" id="sound-toggle" title="Toggle ambient mode">
+                <span id="sound-icon">&#9835;</span> ambient
+            </button>
+            <span>frozen snapshot · 2026-06-16</span>
+        </footer>
+
+        <div id="valkyrie-ticker"
+             class="ticker">
+            <div class="ticker-content">
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 19:00</span>
+            <span class="ticker-item__tag ticker-item__tag--cycle">CYCLE</span>
+            <span class="ticker-item__summary">quick_check · $0.0</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 17:30</span>
+            <span class="ticker-item__tag ticker-item__tag--cycle">CYCLE</span>
+            <span class="ticker-item__summary">quick_check · $0.0</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 17:00</span>
+            <span class="ticker-item__tag ticker-item__tag--cycle">CYCLE</span>
+            <span class="ticker-item__summary">quick_check · $0.18</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 16:30</span>
+            <span class="ticker-item__tag ticker-item__tag--cycle">CYCLE</span>
+            <span class="ticker-item__summary">quick_check · $0.19</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 16:00</span>
+            <span class="ticker-item__tag ticker-item__tag--cycle">CYCLE</span>
+            <span class="ticker-item__summary">quick_check · $0.13</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 14:01</span>
+            <span class="ticker-item__tag ticker-item__tag--trade">TRADE</span>
+            <span class="ticker-item__summary">OBE BUY x3 @ $10.3</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 14:01</span>
+            <span class="ticker-item__tag ticker-item__tag--decision">DECISION</span>
+            <span class="ticker-item__summary">OBE trade_proposal [0.75/10]</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 14:01</span>
+            <span class="ticker-item__tag ticker-item__tag--trade">TRADE</span>
+            <span class="ticker-item__summary">OBE BUY x17</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-16 14:01</span>
+            <span class="ticker-item__tag ticker-item__tag--decision">DECISION</span>
+            <span class="ticker-item__summary">OBE trade_proposal [0.75/10]</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-15 14:03</span>
+            <span class="ticker-item__tag ticker-item__tag--trade">TRADE</span>
+            <span class="ticker-item__summary">SMMT BUY x10 @ $14.01</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-15 14:03</span>
+            <span class="ticker-item__tag ticker-item__tag--decision">DECISION</span>
+            <span class="ticker-item__summary">SMMT trade_proposal [0.9/10]</span>
+        </div>
+        <div class="ticker-item">
+            <span class="ticker-item__time">2026-06-15 14:02</span>
+            <span class="ticker-item__tag ticker-item__tag--trade">TRADE</span>
+            <span class="ticker-item__summary">BETR BUY x5</span>
+        </div>
+</div>
+        </div>
+
+    </div>
+</body>
+</html>

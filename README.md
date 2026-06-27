@@ -1,19 +1,24 @@
 # Valhalla Capital — memorial site
 
-A static, single-page memorial / post-mortem for **Valhalla Capital**, an
-autonomous AI value-investing experiment (agent "Valkyrie") that ran from
-13 February to 16 June 2026, lost 9.77%, hit its −10% stop, and was retired.
+A static memorial for **Valhalla Capital**, an autonomous AI value-investing
+experiment (agent "Valkyrie") that ran from 13 February to 16 June 2026, lost
+9.77%, hit its −10% stop, and was retired. The page is a memorial landing, the
+full post-mortem, and a clickthrough to a frozen snapshot of the live trading
+dashboard.
 
-The full writeup and raw data live at
+The code and raw data live at
 <https://github.com/evangelinekamin/valhalla-capital>.
 
 ## What this is
 
-Pure static HTML/CSS — no build step, no JavaScript, no framework, no external
-network requests. It is meant to be dropped onto GitHub Pages as-is.
+The main page is static HTML/CSS with no build step or framework. (Two caveats
+to the old "no external requests, no JS" goal: the post-mortem's charts load
+from an image host, and the `live-snapshot/` dashboard capture ships the
+original dashboard's JavaScript in a frozen, inert state.) Drop onto GitHub
+Pages as-is.
 
 ```
-index.html              the page
+index.html              memorial landing + full post-mortem
 styles.css              the stylesheet
 .nojekyll               tells Pages to serve files verbatim (no Jekyll)
 assets/
@@ -21,6 +26,9 @@ assets/
   wing.svg              the wing mark (standalone, currentColor)
   equity-curve.svg      the equity curve as a standalone SVG
 gen_chart.py            regenerates the inline equity SVG from the source CSV
+live-snapshot/          frozen static capture of the live dashboard
+  index.html            status board (plus valkyrie/decisions/trades.html)
+  static/               the dashboard's own CSS/JS, served inert
 ```
 
 The equity chart is embedded **inline** in `index.html` (so it inherits page
@@ -61,9 +69,9 @@ only).
 
 ## Editing notes
 
-- **Banner slot.** There is a styled, empty banner at the very top of
-  `index.html` (search for `class="banner"`). Replace its text with a memorial
-  message, or delete the whole `<div class="banner">…</div>`.
+- **Banner.** A styled banner at the top of `index.html` (search for
+  `class="banner"`) carries the "no longer live" notice and links to the repo
+  and the dashboard snapshot.
 - **Design is a starting point.** The look is distilled from the fund's own
   monitoring terminal — a "VA-11 Hall-A terminal warmth meets Swiss typography"
   aesthetic: deep navy ground, warm cyan for life, soft pink for the retired,
@@ -73,5 +81,6 @@ only).
 - **Fonts** are a system serif + grotesque + mono stack — nothing is fetched
   from a font CDN, so the page stays fully self-contained and offline-friendly.
 - **Accessibility & privacy.** The page uses semantic HTML, a skip link, image
-  `title`/`desc`, honors `prefers-reduced-motion`, and contains no personal
-  identifiers, analytics, or trackers. Keep it that way.
+  `title`/`desc`, honors `prefers-reduced-motion`, and carries no analytics or
+  trackers. (The post-mortem ends with a contact email, on purpose.) Keep it
+  that way.

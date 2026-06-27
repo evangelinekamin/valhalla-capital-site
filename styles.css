@@ -562,3 +562,180 @@ a:focus-visible,
     body::after { display: none; }
     body { background: #fff; color: #111; }
 }
+
+/* ============================================================
+   Appended: snapshot clickthrough + full post-mortem body
+   ============================================================ */
+
+/* -- Snapshot clickthrough ------------------------------------ */
+.snapshot-link {
+    display: block;
+    background: var(--bg-panel);
+    border: 1px solid var(--cyan-dim);
+    border-left: 3px solid var(--cyan);
+    padding: 1.25rem 1.4rem;
+    color: var(--text-primary);
+}
+
+.snapshot-link:hover {
+    background: var(--bg-hover);
+    border-color: var(--cyan-dim);
+    border-left-color: var(--cyan);
+}
+
+.snapshot-link__title {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-md);
+    letter-spacing: 0.02em;
+    color: var(--cyan);
+}
+
+.snapshot-link__sub {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+/* -- Full post-mortem body ------------------------------------ */
+.postmortem__body {
+    max-width: 74ch;
+}
+
+.postmortem__body > *:first-child { margin-top: 0; }
+
+.postmortem__body h2 {
+    font-family: var(--font-display);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    margin: 3rem 0 1rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--bg-surface);
+}
+
+.postmortem__body h3 {
+    font-family: var(--font-display);
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2.2rem 0 0.8rem;
+}
+
+.postmortem__body h4 {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    margin: 1.8rem 0 0.7rem;
+}
+
+.postmortem__body p { margin-bottom: 1.25rem; }
+
+.postmortem__body ul,
+.postmortem__body ol { margin: 0 0 1.25rem 1.5rem; }
+
+.postmortem__body li { margin-bottom: 0.45rem; }
+
+.postmortem__body li > ul,
+.postmortem__body li > ol { margin-top: 0.45rem; margin-bottom: 0; }
+
+.postmortem__body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.8rem 0;
+    border: 1px solid var(--bg-surface);
+    background: var(--bg-panel);
+}
+
+/* inline code + the verbatim system-prompt block */
+.postmortem__body code {
+    font-family: var(--font-mono);
+    font-size: 0.86em;
+    color: var(--cyan);
+    background: var(--bg-panel);
+    padding: 0.12em 0.36em;
+}
+
+.postmortem__body pre {
+    background: var(--bg-panel);
+    border: 1px solid var(--bg-surface);
+    border-left: 3px solid var(--cyan-dim);
+    padding: 1.2rem 1.4rem;
+    overflow-x: auto;
+    margin: 1.8rem 0;
+}
+
+.postmortem__body pre code {
+    color: var(--text-muted);
+    background: none;
+    padding: 0;
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+}
+
+/* tables */
+.table-wrap {
+    overflow-x: auto;
+    margin: 1.8rem 0;
+    border: 1px solid var(--bg-surface);
+}
+
+.postmortem__body table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-variant-numeric: tabular-nums;
+}
+
+.table-wrap table { margin: 0; }
+
+.postmortem__body th,
+.postmortem__body td {
+    text-align: left;
+    padding: 0.5rem 0.85rem;
+    border-bottom: 1px solid var(--bg-surface);
+    vertical-align: top;
+}
+
+.postmortem__body thead th {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--fs-xs);
+    border-bottom: 1px solid var(--text-dim);
+    background: var(--bg-panel);
+    white-space: nowrap;
+}
+
+.postmortem__body tbody tr:hover { background: var(--bg-panel); }
+
+/* footnotes (python-markdown emits div.footnote) */
+.postmortem__body sup { font-size: 0.78em; }
+
+.postmortem__body .footnote {
+    margin-top: 2.5rem;
+    font-size: var(--fs-sm);
+    color: var(--text-muted);
+}
+
+.postmortem__body .footnote hr {
+    border: none;
+    border-top: 1px solid var(--bg-surface);
+    margin-bottom: 1.2rem;
+}
+
+.postmortem__body .footnote li { margin-bottom: 0.6rem; line-height: 1.6; }
+
+.footnote-backref { border: none; }
+
+.postmortem__body hr {
+    border: none;
+    border-top: 1px solid var(--bg-surface);
+    margin: 2rem 0;
+}

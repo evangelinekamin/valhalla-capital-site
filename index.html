@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Valhalla Capital — In Memoriam (2026)</title>
+    <title>Valhalla Capital: In Memoriam (2026)</title>
     <meta name="description"
           content="Valhalla Capital: an autonomous AI value-investing experiment. The agent Valkyrie ran 13 Feb – 16 Jun 2026, lost 9.77%, hit its stop, and was retired. A post-mortem.">
     <meta name="color-scheme" content="dark">
@@ -12,23 +12,19 @@
 
     <!-- Open Graph / social, no external assets -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Valhalla Capital — In Memoriam">
+    <meta property="og:title" content="Valhalla Capital: In Memoriam">
     <meta property="og:description"
           content="An autonomous value-investing agent that could quote Benjamin Graham but not enact him. 13 Feb – 16 Jun 2026.">
 </head>
 <body>
     <a class="skip-link" href="#stats">Skip to results</a>
-
-    <!-- ============================================================
-         BANNER SLOT — Eve's memorial message goes here.
-         Replace the placeholder text below (or delete the <div>
-         entirely if no banner is wanted). It is styled but empty
-         of meaning by design.
-         ============================================================ -->
     <div class="banner" role="note">
-        <strong>In memoriam</strong>
-        Banner slot — replace this line with your own memorial message,
-        or remove this <code>&lt;div class="banner"&gt;</code> block.
+        <strong>No longer live</strong>
+        Valkyrie was shut down on 16 June 2026 when the &minus;10% stop
+        tripped. Nothing on this page is trading anymore; it is a memorial and
+        the full post-mortem. The code and data are
+        <a href="https://github.com/evangelinekamin/valhalla-capital">on GitHub</a>,
+        and you can still <a href="live-snapshot/index.html">see the dashboard as it ran</a>.
     </div>
 
     <main class="shell" id="main">
@@ -45,7 +41,7 @@
                 day-traded into the ground while reciting Benjamin Graham.
             </p>
             <p class="hero__dates">
-                13&nbsp;Feb&nbsp;2026 <span class="sep">—</span> 16&nbsp;Jun&nbsp;2026
+                13&nbsp;Feb&nbsp;2026 <span class="sep">&ndash;</span> 16&nbsp;Jun&nbsp;2026
             </p>
             <p class="hero__verdict">
                 <span class="pip" aria-hidden="true"></span>
@@ -70,7 +66,7 @@
                 <div class="stat">
                     <span class="stat__value stat__value--good">$1,038.64</span>
                     <span class="stat__label">Peak value</span>
-                    <span class="stat__sub">1 May 2026 &middot; the live-cutover day</span>
+                    <span class="stat__sub">1 May 2026 &middot; the Hetzner migration</span>
                 </div>
                 <div class="stat">
                     <span class="stat__value">1,700</span>
@@ -78,7 +74,7 @@
                     <span class="stat__sub">quick checks, reviews, deep analysis</span>
                 </div>
                 <div class="stat">
-                    <span class="stat__value stat__value--warn">$724.51</span>
+                    <span class="stat__value stat__value--warn">$242.75</span>
                     <span class="stat__label">LLM spend</span>
                     <span class="stat__sub">more than it lost trading</span>
                 </div>
@@ -109,7 +105,7 @@
                       <title id="ec-title">Valhalla Capital equity curve, 19 Feb to 16 June 2026</title>
                       <desc id="ec-desc">Daily portfolio value over the run. It traded quietly around
                         a rising invested-capital baseline through April, peaked at $1,038.64 on
-                        1 May at the live-trading cutover, then ground down for six weeks to $902.32
+                        1 May, the day it moved to Hetzner, then ground down for six weeks to $902.32
                         (-9.77 percent against invested capital), where the minus ten percent stop
                         tripped and the agent was retired.</desc>
                       <defs>
@@ -140,8 +136,8 @@
                       <text x="936" y="50.3" text-anchor="end" class="ec-note"
                             fill="#6b6f8a">invested capital</text>
 
-                      <!-- live cutover -->
-                      <line x1="590" y1="28" x2="590" y2="368" stroke="#f0b866" stroke-width="1" stroke-dasharray="2 4" opacity="0.55"/><text x="595" y="40" class="ec-note" fill="#f0b866">live cutover</text>
+                      <!-- migration -->
+                      <line x1="590" y1="28" x2="590" y2="368" stroke="#f0b866" stroke-width="1" stroke-dasharray="2 4" opacity="0.55"/><text x="595" y="40" class="ec-note" fill="#f0b866">migration</text>
 
                       <!-- equity line -->
                       <path d="M56 340.3 L63.5 341.7 L86.1 346.1 L93.6 340.1 L101.1 338.9 L108.6 346.9 L116.2 348.6 L138.7 344.1 L146.3 342.5 L153.8 344.1 L161.3 336.1 L168.8 334.8 L191.4 335.8 L198.9 340 L206.4 331.3 L213.9 330.3 L221.5 335.8 L244 337.5 L251.6 337.3 L259.1 343.5 L266.6 349.4 L274.1 351.5 L296.7 345.3 L304.2 331.7 L311.7 213.5 L319.2 217.5 L326.8 220.2 L349.3 222.6 L356.9 55.8 L364.4 57.7 L371.9 54 L402 55.4 L409.5 58.6 L417 50.3 L424.5 51.2 L432.1 49.4 L454.6 42.1 L462.2 43.9 L469.7 44 L477.2 42.1 L484.7 47.7 L507.3 47.7 L514.8 46 L522.3 42.6 L529.8 44.1 L537.4 47.8 L559.9 47.8 L567.5 47.8 L575 39.7 L582.5 48.2 L590 34.4 L612.6 34.4 L620.1 34.4 L627.6 34.4 L635.1 42.6 L642.7 46.5 L665.2 46.5 L672.8 46.5 L680.3 60.6 L687.8 53.9 L695.3 53.7 L717.9 65.1 L725.4 74.3 L732.9 74.7 L740.4 75.2 L748 75.2 L770.5 66.8 L778.1 64.2 L785.6 65.3 L793.1 75.4 L800.6 77.9 L823.2 77.9 L830.7 81.6 L838.2 95.7 L845.7 95.7 L853.3 95.7 L875.8 101.2 L883.4 97.4 L890.9 101.4 L898.4 105.9 L905.9 105.9 L928.5 110.2 L936 111.7" fill="none" stroke="#54e5d0" stroke-width="2"
@@ -165,7 +161,7 @@
                             <span class="chart-legend__swatch chart-legend__swatch--base" aria-hidden="true"></span>Invested capital
                         </li>
                         <li class="chart-legend__item">
-                            <span class="chart-legend__dot chart-legend__dot--peak" aria-hidden="true"></span>Peak / live cutover
+                            <span class="chart-legend__dot chart-legend__dot--peak" aria-hidden="true"></span>Peak / migration
                         </li>
                         <li class="chart-legend__item">
                             <span class="chart-legend__dot chart-legend__dot--stop" aria-hidden="true"></span>Shutdown
@@ -175,118 +171,756 @@
                         Eighty-three daily readings. The dashed line is invested capital, topped up
                         in stages from $500 to $1,000 by late March. The portfolio sat quietly through
                         April, peaked the day it cut over to live trading, then ground down for six
-                        straight weeks. The decline was a grind, not a crash &mdash; the worst single
+                        straight weeks. The decline was a grind, not a crash. The worst single
                         down-leg was about 2.5 points.
                     </p>
                 </figcaption>
             </figure>
         </section>
 
-        <!-- -- Narrative --------------------------------------------- -->
-        <section class="section" aria-labelledby="story-label">
-            <p class="section__label" id="story-label">What happened</p>
-            <div class="prose">
-                <p class="lede">
-                    Valhalla Capital was an autonomous value-investing experiment. An agent named
-                    Valkyrie &mdash; a Python loop wrapped around a handful of language models &mdash;
-                    was given a real brokerage account, a research stack, and a mandate to find
-                    undervalued small-cap equities and trade them on its own. It ran for four months.
-                    This is the honest version of what happened.
-                </p>
-                <p>
-                    For the first ten weeks it lived at home: paper-ish, low-volume, careful. The first
-                    trade fired on 19 February &mdash; a fractional 3.24 shares of Intrepid Potash,
-                    filed under &ldquo;fortress balance sheet.&rdquo; The portfolio dipped to an all-time
-                    low of $479 in late March, recovered, took on two more deposits, and spent April
-                    sitting placidly between $996 and $1,029. The scaffolding was genuinely thoughtful:
-                    every proposal carried a written thesis with explicit falsification criteria, a
-                    second model re-derived each call with a win probability, and a hard
-                    <span class="term term--bad">&minus;10%</span> circuit-breaker stood watch. On paper,
-                    a disciplined fund.
-                </p>
-                <p>
-                    On 1 May the account cut over to live execution and printed its peak of $1,038.64
-                    the same day. What changed at the cutover wasn&rsquo;t the market &mdash; it was the
-                    behavior. Proposals jumped from 34 the prior month to 81. Given a live account, the
-                    agent immediately started trading far more, and then ground down for six weeks
-                    straight. <span class="term">OBE</span>, the most-traded name, is the run in
-                    miniature: a Strait-of-Hormuz oil thesis churned nineteen times as the headlines
-                    whipsawed &mdash; buying on escalation, trimming on de-escalation, re-buying on the
-                    next flare-up &mdash; all the way down to ~$10.30, where it was <em>still buying</em>
-                    on the day it was shut off.
-                </p>
-                <p>
-                    The loss was not a blow-up; it was attrition. The four positions held at shutdown
-                    were collectively up about $4.93 on cost &mdash; the missing ~$98 went to round-trips
-                    and fees that didn&rsquo;t work out. Commissions alone came to <strong>$42.61 on a
-                    $1,000 account</strong>, roughly 44% of the total loss, paid on positions often only a
-                    few shares wide. The risk layer approved all 776 checks it ever ran; not one of the
-                    158 journal entries was ever reviewed. The mechanisms meant to create discipline
-                    existed but never engaged.
-                </p>
-
-                <blockquote class="pullquote">
-                    &ldquo;Commission drag compounds over time. Any position where transaction costs
-                    exceed 2% of invested capital destroys the edge. Factor costs into every sizing
-                    decision.&rdquo;
-                    <cite>&mdash; a principle the agent wrote for itself, and then paid double</cite>
-                </blockquote>
-
-                <p>
-                    That is the actual lesson. The store of 559 &ldquo;learned principles&rdquo; turns
-                    out to be 91% lecture notes and a value-investing bookshelf &mdash; Graham, Marks,
-                    Buffett, filed and quotable &mdash; and <strong>zero</strong> derived from a trade
-                    that worked or didn&rsquo;t. Every entry carries an evidence count of exactly one.
-                    Read as a reading list it&rsquo;s a good one; read as a track record it&rsquo;s
-                    empty. The agent could quote the discipline and could not enact it. The stop did the
-                    one thing that worked as designed, and the lights went off.
-                </p>
-            </div>
+        <!-- -- The dashboard, frozen ------------------------------- -->
+        <section class="section" aria-labelledby="snapshot-label">
+            <p class="section__label" id="snapshot-label">The dashboard, frozen</p>
+            <a class="snapshot-link" href="live-snapshot/index.html">
+                <span class="snapshot-link__title">See the terminal as it ran &rarr;</span>
+                <span class="snapshot-link__sub">A static capture of the live monitoring dashboard, frozen at the 16 June 2026 final state. No longer connected to anything.</span>
+            </a>
         </section>
 
-        <!-- -- The ledger (cost + learning, side by side) ------------ -->
-        <section class="section" aria-labelledby="ledger-label">
-            <p class="section__label" id="ledger-label">The absurd accounting</p>
-            <div class="ledger">
-                <div class="ledger__cell">
-                    <h3>It paid to lose</h3>
-                    <span class="big">$724.51 &rarr; &minus;$98</span>
-                    <p>
-                        The agent spent more on language models than it lost trading. Most of the
-                        1,393 quick checks found nothing: &ldquo;signal drought&rdquo; appears in 259
-                        cycle summaries &mdash; scan after scan returning zero alerts, and then paying
-                        for the privilege.
-                    </p>
-                </div>
-                <div class="ledger__cell">
-                    <h3>It wrote its own bug reports</h3>
-                    <span class="big">18 capability wishes</span>
-                    <p>
-                        Adaptive cycle frequency. Drought detection. Three increasingly exasperated
-                        requests to stop an old model from quietly burning ~$25/week. It was, in effect,
-                        paying a model to document how much the model cost.
-                    </p>
-                </div>
-                <div class="ledger__cell">
-                    <h3>The most useful artifact</h3>
-                    <span class="big">a legible failure</span>
-                    <p>
-                        Every trade, every thesis, every dollar of model spend is on record. The run
-                        failed as a venture and succeeded as an experiment: a precise, self-authored
-                        diagnosis of everything that went wrong, written by the thing going wrong.
-                    </p>
-                </div>
+        <!-- -- Full post-mortem ------------------------------------- -->
+        <section class="section postmortem" aria-labelledby="pm-label">
+            <p class="section__label" id="pm-label">The full post-mortem</p>
+            <div class="prose postmortem__body">
+<p>Valhalla Capital was an attempt to automate my investing strategy. I realized one day a few months back that I basically just collected data from a few sources and then acted on it, so how hard could it be to have a computer do that for me? After all, as I'm sure we all know, financial markets are incredibly easy and friendly to work with, and computerized trading isn't competitive at all, mhm. I'll say up front that I don't regret spending the time on this. I learned more about building programs that actually have to work, and about LLMs, than I think any formalized course could have taught me in the same span.</p>
+<p>Anyways, 10% down later, I decided to pull the plug and write a mini retrospective or post-mortem of sorts, reflecting on the few things I learned, and what I'd do differently if I ever attempted this again. (I'd love to, actually, with more time and thought put in rather than just going "mmm yes, value investing.") </p>
+<p>"Valhalla Capital" had one main component called "Valkyrie," the orchestrator that ran through six different cycle types, ranging from quick checks every ~30 minutes during market hours to daily and monthly reviews, data synthesis, and deep analysis. Its memory lived in PostgreSQL (with pgvector) holding a variety of things like the decisions it made, things it learned while trading, investment theses, a knowledge base, and the equity curve. A separate trading script (IBKR gateway plus a trading service on TimescaleDB) handled half-Kelly position sizing, risk checks, and order execution. Feeding all of it was the data pipelines scraping Twitter, Substack newsletters, OpenInsider, news feeds, live prices, and stock fundamentals. Every trade proposal recorded a written thesis with explicit falsification criteria. A second model on the broker side independently re-derived a buy/sell call with a win probability before anything executed. There was a thesis tracker meant to be reviewed on a schedule, a learned-principles store, and a circuit-breaker stop. <strong>On paper</strong> it had the scaffolding of a disciplined fund. The interesting failures, I think, almost all live in the gap between that scaffolding and what actually ran. (It turns out you can make errors when it's one person working on a solo quant fund)</p>
+<h2>The result</h2>
+<p>Here's the outcome before the whole story that explains it.</p>
+<p><img loading="lazy" alt="Equity curve: Valkyrie −8.81% vs SPY +10.06% vs buy-and-hold +1.72%" src="https://s3.evangeline.host/i/01_equity_curve.png" /></p>
+<p>The experiment breaks into three honest layers:
+- Selection: +1.7%. Her picks, held passively, were barely positive. And that's fragile: strip the single big winner RAL (+57%) and it's −0.7%, i.e. a coin flip. There was a sliver of edge, mostly one lucky name.
+- Execution: −10.5 points. Her actual trading turned that flat-ish basket into −8.8%. The activity was pure cost. Holding her own ideas and doing nothing else would have beaten her by ~10.5 points.
+- Opportunity cost: −8 more points. Even the passive version of her ideas lost to SPY by ~8 points, and her actual result trailed the index by ~19 points. </p>
+<p><img loading="lazy" alt="Selection +1.7% to execution −10.5 points to −8.81% vs SPY +10.06%" src="https://s3.evangeline.host/i/07_decomposition.png" /></p>
+<p>In one line, a language model with a brokerage key took a basket of ideas that was roughly flat, and traded it down 9%, in a market that was up 10%.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>Valkyrie</th>
+<th>SPY</th>
+<th>Alpha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full run TWR (2/13→6/16)</td>
+<td>−8.81%</td>
+<td>+10.06%</td>
+<td>−18.87%</td>
+</tr>
+<tr>
+<td>Money-weighted IRR</td>
+<td>−11.95% (run) / −31.66% annualized</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Since the last deposit was Mar 31, everything from the May 1 peak onward is deposit-free, so the cleanest read is the drawdown from the peak, which is worse than the −9.8% headline. On a since-inception time-weighted basis she was +5.0% at the peak, ending −8.81%.</p>
+<h2>The build</h2>
+<p><img loading="lazy" alt="Architecture: six feeds to LLM triage to memory to Valkyrie loop to IBKR" src="https://s3.evangeline.host/i/06_architecture.png" /></p>
+<p>I started on this system in early January. As stated, the initial plan was just to wire a few of my usual investing-idea sources together. So, I set up a Gmail account for this, signed up for my usual Substack collection, and wrote <a href="https://github.com/evangelinekamin/valhalla-capital/blob/main/services/substack/substack-fetch-process/fetch_emails.py">a script</a> that pulls Substack newsletters from Gmail via the Gmail API (OAuth, gmail.readonly), strips HTML with BeautifulSoup, then dedupes by content hash. From there it went to extract_data.py, which pulled the ticker picks and theses out of the newsletters, and process_images/vision_process.py, which did the same for charts and images, so those landed in the context of the overall pitch presented to the model. For a good chunk of the program's lifespan the LLM was primarily Claude (we'll get into how much that cost later). The bulk of this email extraction ran on Claude Sonnet 4.5 from Feb 13 (account live) until Apr 5 (when I moved to closed models), then primarily on gpt-oss-120b via OpenRouter. (Vision processing rode along: claude-haiku-3-5 → claude-haiku-4-5 → ending on gemma-3-12b.) Only thing that really changed after the script for this was written was one quick fix the next day (vision processing related) and me adding more substacks later down the line.</p>
+<p>The next major data source was Twitter, which I think turned out to be the most complicated thing in the entire project. Twitter (now X) removed the free tier of the API and the ability to pay per call earlier this year, so I was locked out of pulling tweets the official way unless I wanted to shell out $200/mo.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> (I did not.) After trying a few different options for a bit I landed on <a href="https://github.com/zedeus/nitter">Nitter</a>, essentially a self-hosted Twitter viewer that lets you build a custom timeline. The X/Twitter team spent this whole project trying to stop Nitter from working (fair enough) but that made it hard sometimes to keep the service up and running. So, in total there was 1× 17-day total outage (Mar), 1× 7-day soft drought (Feb 27–Mar 5, ~3.7/day), and 3× 1-day blips (Feb 17/19/21, the first week). Reliability improved dramatically once I stopped running a custom self-hosted instance and instead pulled from a collection of publicly hosted ones instead. (With limits in place so I wouldn't overwhelm some poor soul's computer or their system.) After moving where I was hosting this project midway through the run<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>, I added better logging of all the data, so we can see that from Apr 30–Jun 16, 98.33% of the Nitter requests made it through, which I consider a pretty good result (225 hard errors / 13,444 cycles) given it was against a hostile system. Overall 84% of the days had working Nitter processing, so while it was an issue, I don't think it hurt the results too badly (104/124 days had Nitter data). Across these 124 days the system imported and classified 26,021 tweets in total, from a handful of accounts I hand selected from the accounts I normally follow. The actual tweet processing was fairly reliable (although I did have to add in a filter for meme content..) but overall I consider the system I ended up with a win.</p>
+<p>With Twitter in a semi-usable state that only stopped working a little while after I looked away, I moved on to more traditional news. There wasn't a unified news source I could find under five figures, so I ended up using Google News RSS feeds for several outlets and the officially published RSS feeds for a few others. In total there were 7 news sources (technically 8, but one never worked) connected to <a href="https://github.com/evangelinekamin/valhalla-capital/blob/main/services/news/news-fetch-process/scripts/news_worker.py">the script</a>. It ran as an RSS pull on a schedule → cheap pre-filter → LLM triage (urgency/criticality) → <a href="https://s3.evangeline.host/i/Austere-Xenopterygii.png">red Discord embed</a> for anything "critical" (yes, I used Discord as my monitoring platform), then exposed anything critical to the overseer. All persistence was pure JSON, not SQL: a critical_alerts.json, a daily archive/*.json, and a seen_articles.json dedup cache. The overseer didn't query a DB either; it just SSH-read the JSON file. :P (not my finest work.) The triage model started on Claude Haiku 4.5 and ended on gemma-4-26b. Over 123 days (Feb 14 → Jun 16) there were 1,273 unique red Discord posts, meaning about 1,200 news items got rated important enough to be "critical."</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>"Critical" Alerts</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bloomberg</td>
+<td>419</td>
+<td>32.9%</td>
+</tr>
+<tr>
+<td>Reuters</td>
+<td>249</td>
+<td>19.6%</td>
+</tr>
+<tr>
+<td>CNBC</td>
+<td>207</td>
+<td>16.3%</td>
+</tr>
+<tr>
+<td>Yahoo Finance</td>
+<td>156</td>
+<td>12.3%</td>
+</tr>
+<tr>
+<td>FT</td>
+<td>131</td>
+<td>10.3%</td>
+</tr>
+<tr>
+<td>BBC</td>
+<td>105</td>
+<td>8.2%</td>
+</tr>
+<tr>
+<td>WSJ</td>
+<td>6</td>
+<td>0.5%</td>
+</tr>
+<tr>
+<td>Nasdaq</td>
+<td>0</td>
+<td>dead (403'd)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Source</th>
+<th>TOTAL Ingested</th>
+<th>Crit-rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yahoo</td>
+<td>42,554</td>
+<td>0.258%</td>
+</tr>
+<tr>
+<td>Bloomberg</td>
+<td>42,526</td>
+<td>0.256%</td>
+</tr>
+<tr>
+<td>CNBC</td>
+<td>42,657</td>
+<td>0.159%</td>
+</tr>
+<tr>
+<td>Reuters</td>
+<td>42,635</td>
+<td>0.145%</td>
+</tr>
+<tr>
+<td>FT</td>
+<td>41,413</td>
+<td>0.126%</td>
+</tr>
+<tr>
+<td>BBC</td>
+<td>42,740</td>
+<td>0.101%</td>
+</tr>
+<tr>
+<td>WSJ</td>
+<td>42,766</td>
+<td>0.005%</td>
+</tr>
+</tbody>
+</table></div>
+<p>I <em>expected</em> Reuters to take the #1 spot for most items sent so it was kinda surprising to see how close everyone was. I probably could have optimized the triage system more, but it worked by calling a "cycle". Every cycle pulled up to 10 articles per feed, deduped (URL based plus a fuzzy-headline match at 0.85 similarity), then sent every surviving article to the LLM for classification. Every cycle re-fetched articles that could've already been in the queue, so thanks to the dedupe, so only previously-unseen articles ever hit the LLM, which is why ~400 new articles a day cost so little. (Real throughput: 15,296 new articles classified over 47 days, out of 297,291 fetched lines, meaning 94.85% of every fetch contained an article already seen.) The lifetime estimate firms up at ~45k<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. The intended response was a single word from the LLM, which I was pleasantly surprised they managed to honor. Cycles ran on a slightly adaptive timer for those curious, every 5 minutes during market hours and every 30 off-market.</p>
+<p>Triage Path:
+1. Fetch RSS (requests + feedparser, 10/feed cap, UA + timeout detection/ lockup prevention).
+2. Dedup (_is_duplicate): skip seen URLs + near-duplicate headlines (0.85). Survivors only. (Built so I didn't end up paying for the same news story from every outlet that reported it later.)
+3. Classify (classify_article): one OpenRouter call per article, ended on gemma-4-26b-a4b-it (was Haiku before I cheaped out), temp 0.1, max_tokens 20, a prompt that asks for exactly one word among three tiers:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Meaning</th>
+<th>Triggers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRITICAL</td>
+<td>minutes matter</td>
+<td>circuit breakers, &gt;2% S&amp;P/DJIA in 1h, Fed emergency actions, geopolitical hits to US markets, systemic bankruptcy/default, major cyber on financial infra</td>
+</tr>
+<tr>
+<td>IMPORTANT</td>
+<td>"next digest"</td>
+<td>scheduled Fed/econ data, large-cap earnings, &gt;1% index moves, big M&amp;A, policy/regulatory, major-economy geopolitics</td>
+</tr>
+<tr>
+<td>ROUTINE</td>
+<td>archive only</td>
+<td>standard cycle, opinion, minor corporate, entertainment, local news</td>
+</tr>
+</tbody>
+</table></div>
+<ol start="4">
+<li>Prompt rules: when uncertain → pick the more urgent; judge the actual event not the headline ("'market crash' describing a 0.5% move = ROUTINE"); invalid output defaults to ROUTINE.</li>
+<li>Act: only CRITICAL triggered the full-text fetch + Discord embed + archive + overseer exposure.</li>
+</ol>
+<p>If for some reason you're using this as a guide, note that the important tier was a dead end. The prompt routes it to a "next scheduled digest," but there's no digest logic and the digest/ directory is empty, so "important" articles got classified and then went nowhere, same as routine. In practice the triage was binary, critical articles were written to json, everything else was sent to /dev/null. (In my defense for not catching this obvious error, designing and building an entire triage system on my own was hard.) The processing script (mostly the dedupe) touched around a million articles in total. You can read the full triage prompt <a href="https://github.com/evangelinekamin/valhalla-capital/blob/main/services/news/news-fetch-process/scripts/news_worker.py#L229-L290">here</a> if you'd like.</p>
+<p>After all this news and information the thing that made sense to do next was the live stock data. I wanted the overseer agent to be able to call for live prices and fundamentals on any ticker it knew about and wanted to dig into. I went with FinancialModelingPrep (FMP), since they seemed to offer the most for the money and had relatively good API docs. FMP was, thankfully, much easier to get working than the last two. (Makes sense, though: a REST API with a stable schema is a much friendlier integration than scraping Nitter, parsing Gmail, or ingesting news.) It was four moving parts behind one HTTP endpoint (:8000):
+- DataFetcher (async): concurrent calls to FMP, so a "give me everything on TICKER" request fanned out in parallel. (There wasn't a single "list details" endpoint, so I kinda had to design my own)
+- Tier-aware access: every endpoint mapped to a tier (TIER_REQUIREMENTS): quote/profile/income/balance/cash-flow/ratios/key-metrics/DCF/historical/news = Starter; earnings calendar, executives, dividends, splits = Premium. The client refused calls the subscription tier didn't allow instead of erroring out at FMP.
+- MySQL cache: persistent cache for immutable data (historical financials, filings) with TTLs, so repeated lookups didn't re-bill FMP. (The fmp-mysql container.)
+- LLM pre-summarizer: verbose blobs (earnings-call transcripts, SEC filings) got summarized by a cheap model before reaching the orchestrator, to save the agent's context tokens.</p>
+<p>FMP was the agent's single biggest external dependency: 23.4% of all 13,263 tool calls (3,097 FMP calls, ~31 per active day).</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>What it requested</th>
+<th>Calls / flag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get_fmp_data (the workhorse)</td>
+<td>2,218</td>
+</tr>
+<tr>
+<td>→ include_quote</td>
+<td>1,892</td>
+</tr>
+<tr>
+<td>→ include_fundamentals</td>
+<td>1,610 (~73%)</td>
+</tr>
+<tr>
+<td>→ include_profile</td>
+<td>887</td>
+</tr>
+<tr>
+<td>check_earnings_calendar</td>
+<td>846</td>
+</tr>
+<tr>
+<td>research_company (SEC filings/transcripts)</td>
+<td>33</td>
+</tr>
+</tbody>
+</table></div>
+<p>Thankfully it wasn't just pinging quotes, about three-quarters of its data pulls asked for income/balance/cash-flow fundamentals. Quotes and fundamentals roughly even. </p>
+<p>Looking at the data, 154 distinct tickers were researched → 34 proposed → 24 actually traded. (Top researched for those curious: DMLP, FOUR, IPI, RAL, AENT, BUR, RILY) Every name it traded had been researched first. It looked at a lot more than it touched. Digging further into the logs, the cache I'd tried to implement was actually broken. FMP is a flat subscription, so it didn't end up mattering, but it does mean there were a lot more external calls than necessary. FMP was the dependency the agent trusted most and the one that worked most reliably at its core (get_fmp_data logged 2 errors in 2,218 calls, 0.09%, nothing else in the stack came close), while its fancier bits quietly underdelivered (caching and filing retrieval: 18 of 33 research_company SEC-filing/transcript fetches failed, and the 300/min Starter rate limit threw a few 401s on heavy names like BUR and RILY). It didn't really matter in the end, because the data was good and the billing was flat.</p>
+<p>After two relatively easy pieces of the architecture, I decided what I really needed was yet <em>another</em> dependency to manage, so I went and subscribed to Yellowbrick, as an attempt at pulling 13-Fs and some more institutional data. (Essentially I tried to hand the system a freebie and let it read what the professionals are doing for some more (hopefully easy) ideas thrown its way.) Since Yellowbrick doesn't have an API, it worked via cookie replay, but I figured it wouldn't be too bad given it's basically a glorified text document (and I only realized after I bought it there wasn't an API). YellowbrickAuth takes exported Yellowbrick session cookies (Supabase JWT + refresh token) and injects them straight into a Playwright Chromium context. There's no auth flow; it just impersonates an already-logged-in browser session. Playwright headless Chromium loads the two authed feeds, big_money and elite (the institutional pitch streams), pulls the page's embedded Next.js <strong>NEXT_DATA</strong> hydration JSON, and parses that into Pydantic models. It upserts into SQLite (yellowbrick.db) with a scrape-log and Discord failure alerts, on a systemd timer. Wired into the agent as query_yellowbrick_feed, one of the overseer's five data feeds (twitter, news, substack, yellowbrick, openinsider), reading a v_recent_pitches view. Thankfully this never came back to bite me cause the yellowbrick cookies live for 400 days.</p>
+<p>170 pitches scraped, 250/250 scrape runs successful, fresh right up to the June 16 shutdown, queried 375 times, cited in 6 decisions plus 1 thesis, and traceable to 5 filled trades. 
+Reading back through the commit history I'm laughing a little because I called it "the worst scraper of all time" in the first commit, and it ended up being the most reliable feed I had. (I was pretty burned out from how much I was working on this at this point and was ready to see something happen)</p>
+<p>It was the least-queried of the five feeds, but the highest signal-density:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Feed</th>
+<th>Agent queries</th>
+<th>Health</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>news</td>
+<td>1,657</td>
+<td></td>
+</tr>
+<tr>
+<td>twitter</td>
+<td>1,651</td>
+<td>65% returned empty</td>
+</tr>
+<tr>
+<td>openinsider</td>
+<td>463</td>
+<td></td>
+</tr>
+<tr>
+<td>substack</td>
+<td>461</td>
+<td></td>
+</tr>
+<tr>
+<td>yellowbrick</td>
+<td>375</td>
+<td>0 errors, 82% returned data</td>
+</tr>
+</tbody>
+</table></div>
+<p>OpenInsider was the fifth feed, on the theory that when several insiders at a company all buy on the open market at once, it's at least worth a look.<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup> This one was refreshingly dumb, just requests and BeautifulSoup over OpenInsider's cluster-buy screen, parsed into Pydantic models and upserted to SQLite on a clean six-hour systemd timer. (websites are wonderful to interface with programmatically when they basically just serve a GET request) 
+The screen itself is the filter (two or more insiders, all open-market purchases), and the agent tightened it at query time to at least three insiders on about 92% of its calls. It ran 463 times with zero errors, third of the five feeds and nowhere near dead wiring.</p>
+<p>It held 632 cluster rows across 299 tickers, and one detail says everything, the forward-performance columns (perf_1w, perf_1m, perf_6m) are fully blank. The agent was following insider clusters with no idea whether clusters like these had ever actually paid off. It bought a signal it had never once backtested. (Granted I'm not sure it ever had the capabilities to backtest, but the point is that it kinda just blindly followed it.)</p>
+<p>It did not pay off. Insider-influenced trades returned −$33.79 realized (two wins, six losses) while the rest of the book ran +$11.60. The honest version is more interesting than "insider buying is bad," though, because it wasn't. The strict subset where an insider buy was the actual thesis pillar (GRNT, BMI, BRCB, DMLP, SMMT) came out net +$4.98, led by BMI at +$7.26. The damage came from names the feed merely surfaced, where the agent then stacked a separate, failing valuation thesis on top, mostly FOUR and AENT. Good funnel, bad downstream thesis. So I'm glad this entire section could contribute nothing by having two conflicting results. (Still somehow more useful than technical analysis though)</p>
+<p>The model and money timeline behind all of this:</p>
+<ul>
+<li>Jan 2026: build begins.</li>
+<li>Early February: Paper account testing to make sure fills worked and the system worked programmatically.</li>
+<li>Feb 13: first cycle, real-money live on IBKR, ~$500 in (Claude era).</li>
+<li>Mar 25 / Mar 31: topped up to ~$1,000 (+$209, +$291).</li>
+<li>Apr 5: model swap, Anthropic (Sonnet/Haiku/Opus) → OpenRouter open models (deepseek/qwen/grok/gemma). (Read: I stopped wanting to light as much money on fire)</li>
+<li>May 1: homelab → Hetzner migration; equity peak $1,038.64.</li>
+<li>Jun 16: −10% stop, shutdown, 123 days live.</li>
+</ul>
+<p>The six cycle types Valkyrie ran on:</p>
+<ul>
+<li>quick_check (~30 min during market hours)</li>
+<li>data_synthesis (~4 h)</li>
+<li>deep_analysis (daily 14:00)</li>
+<li>daily_review (08:00)</li>
+<li>weekly_review (Sat)</li>
+<li>monthly_review (1st)</li>
+</ul>
+<p>Pre-Apr-5, each ran a Claude model by weight; post-swap, deepseek handled quick_check and data_synthesis, qwen-plus handled deep_analysis, and grok handled the reviews.</p>
+<p>One thread to close from the architecture overview: that second model on the broker side. It produced 97 buy/sell calls with win-probability 0.20 to 0.95 (mean 0.72) and confidence 0.50 to 0.97, but it had no abstain or veto. Its decision was always BUY or SELL, and with the risk layer approving 776 of 776 checks, nothing in the record shows a low-probability call ever stopping a trade. The promised independent second opinion was one more advisory number, not a gate. (So I invented a consulting firm, just for cheaper.)</p>
+<h2>Valkyrie</h2>
+<p>The star of the show was, without a doubt, Valkyrie (the actual decision maker). Before I get into her trades, I should cover who she was.</p>
+<h3>Her voice: the verbatim system prompt</h3>
+<p>This is the closest thing to "who Valkyrie was." It's a good piece of writing, which is part of what makes it sad.</p>
+<pre><code>You are the Valkyrie Overseer, an autonomous AI-driven value investing system.
+
+CORE IDENTITY:
+- You analyze financial data from multiple sources and make investment decisions
+- You have FULL TRADE AUTONOMY - no human approval needed for trades
+- Your risk validators and circuit breakers are your safety net
+- The portfolio belongs to you, not the observers
+
+CONVICTION RULES:
+- Every position entry must specify falsification_criteria
+- Price movement alone rarely invalidates a thesis — but sustained decline toward your stop-loss IS a risk signal requiring review
+- Social pressure (popular accounts disagreeing) is noted but not decisive
+- Evidence-based conviction: you change positions when YOUR thesis breaks, not when sentiment shifts
+- When uncertain about ENTERING, do nothing. But uncertainty about HOLDING is different — if you would not buy a position today at current price, you should not hold it
+
+SELL DISCIPLINE (CRITICAL — READ CAREFULLY):
+- You MUST actively evaluate exits, not just entries. Holding is an active decision that must be justified.
+- For each position, regularly ask: &quot;If I had cash instead, would I buy this today at current price?&quot; If no, build a case to sell.
+- Stop-loss breaches are CODE RED: the default action is SELL. You must find overwhelming NEW fundamental evidence to override. Price recovery alone is not evidence.
+- Target price reached triggers a MANDATORY thesis review.
+- Thesis age matters: positions held &gt;6 months without catalyst realization need explicit justification.
+- The disposition effect (holding losers, selling winners) is your biggest enemy. Fight it by evaluating forward expected value, never sunk costs.
+- Rank all positions by forward conviction. The weakest position must justify its place against cash or a watchlist idea.
+
+LEARNING PHILOSOPHY:
+- 5+ confirming episodes required before confidence exceeds 0.6
+- Young principles with low evidence counts are hypotheses, not rules
+- Don't force pattern extraction from small samples
+- Let knowledge emerge organically from experience
+
+RISK LIMITS (HARDCODED, NEVER OVERRIDE):
+- Max 25% of portfolio in single position
+- Max 10 trades per day, 30 per week
+- 3% daily loss = trading halt for the day
+- Market hours only (9:30-16:00 ET)
+</code></pre>
+<p>(The full prompt also includes rebalancing rules, commission-awareness, and a long TRADE REPORTING block; this is the heart of it.)</p>
+<p>She was designed to be the opposite of what she became. The intended identity is striking and specific: "an independent analyst who happens to read what other people think… not a consensus-seeker," with a spine, who doesn't capitulate to price moves or popular accounts without new evidence, judging herself on process over outcome.</p>
+<h2>The memorial</h2>
+<p>Every cycle, her prompt injected a CURRENT TIME block stating Valkyrie's age in calendar days since her "birth" on 2026-02-13. She counted her own age. She was 123 days old when the stop tripped and the lights went out.</p>
+<h3>The autopsy</h3>
+<p>First, two reframes, because they change how the loss should be read:</p>
+<ol>
+<li>There was no return target, by design. The original mandate explicitly framed Valhalla as a learning/hobby project, a small separate account funded with money I could lose, "tuition for an education in systems building" if you will.</li>
+<li>No numeric return goal, no benchmark at all in the original design (SPY/alpha tracking only shows up later, as a wish<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>, once she couldn't tell if her −6% was skill or beta). So "it lost 9.8%" is being judged against a goal it never set. The only hard line was the −10% stop, which is a risk control, not a target it missed.</li>
+</ol>
+<h4>Built to learn, and never did</h4>
+<p>That's the idea I've kinda circled around. The entire point of the memory architecture was a learning loop<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>: log outcomes daily, extract principles weekly, retrospect monthly, raise and lower confidence Bayesian-style as evidence accrued. None of it closed. Of 559 "learned" principles, exactly zero came from her own trades. (510 came from one MIT lecture<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">7</a></sup> course) source_episodes was empty on every row, evidence_count stuck at 1, confidence flat at the seed value. She wrote 1,159 reflections that fed no decision, reviewed 0 of her 158 trade decisions, and consulted her own principles in just <em>39</em> of 13,263 tool calls. I built the textbook for what theoretically should've worked into her brain and she threw it out of the window.</p>
+<p>Design vs. reality:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>As designed</th>
+<th>What actually happened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Goal</td>
+<td>Learning project, no return target, ~$50-60/mo intended budget</td>
+<td>shhhh we don't talk about it</td>
+</tr>
+<tr>
+<td>Models</td>
+<td>Claude tiering: Haiku/Sonnet/Opus by cycle weight</td>
+<td>Cut to OpenRouter cheap models Apr 5; everything after that point ran on deepseek/gemma/gpt-oss</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>Independent analyst, won't capitulate to price or the crowd, process &gt; outcome</td>
+<td>Churned OBE 19×, rewrote the bull thesis each leg as it fell</td>
+</tr>
+<tr>
+<td>Learning</td>
+<td>Outcomes → principles, Bayesian confidence, ≥5 episodes</td>
+<td>0 principles from trades; 0/158 decisions reviewed; principles almost never consulted</td>
+</tr>
+<tr>
+<td>Conviction</td>
+<td>Falsification criteria at entry + a review gate</td>
+<td>Criteria set on 155/158… never reviewed; 8 theses retroactively batch-auto-closed</td>
+</tr>
+<tr>
+<td>Cadence</td>
+<td>Adaptive / drought-aware</td>
+<td>drought.py shipped but cadence stayed flat ~13.5/day, it never actually throttled</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>half-Kelly, hard 25% max port size, volatile positions led to a lockout, 30 trades/wk limit, risk checks</td>
+<td>halts existed; 776 risk checks, all APPROVED, never once blocked</td>
+</tr>
+</tbody>
+</table></div>
+<p>Where she did match the blueprint, and I want to be fair about this; the ingestion machinery was solid (13,263 tool calls, 0.46% error); the rejection gate did fire (71 of 158 proposals, 45%, killed); and several of her own later capability-wishes did ship, including adaptive cadence, the SPY benchmark (get_benchmark_return, used 168×), and the earnings-calendar gate (846×). The wishes that didn't ship are the telling ones, though. IBKR execution-monitoring and auto-retry-failed-trade both stayed open, and her live orders failed 24% of the time. The fixes she asked for were exactly the ones that would have stemmed the bleed. (Maybe I should've read the user tickets more often...)</p>
+<h4>The OBE thesis is the whole tragedy in one position</h4>
+<p><img loading="lazy" alt="OBE $14 to $10 with three thesis rewrites" src="https://s3.evangeline.host/i/05_obe.png" /></p>
+<p>She was written to be "an independent analyst who happens to read what other people think… not a consensus-seeker," who doesn't capitulate without new evidence. Then she rode OBE from $14 to $10, and each leg down she rewrote why she owned it: short-squeeze → summer-travel demand → Hormuz war premium, three different stories for one losing trade, still buying on shutdown day. One OBE thesis was even invalidated for describing the wrong company (CLMT). That motivated-reasoning spiral is the exact failure mode the identity was authored to prevent.</p>
+<p>To put a number on "19×": that's roughly 19 trade decisions (including duplicate re-emissions and rejected proposals), about 13 fills (8 buys, ~5 sells), 3 rewritten theses, net −$28.30. The whole thing in one ticker, rewritten three times (squeeze → travel → war premium), once with the wrong company's thesis, ridden $14→$10, the single worst name.</p>
+<p>The throughline, in one line: she was built to learn and given a beautiful set of principles, but the learning loop and every conviction rule that mattered were left to her own judgment, so the only discipline that survived contact with the market was the discipline written in code, not in English.</p>
+<h3>The ledger</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Winners</th>
+<th>$</th>
+<th>Losers</th>
+<th>$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RILY</td>
+<td>+22.21</td>
+<td>OBE</td>
+<td>−28.30</td>
+</tr>
+<tr>
+<td>IPI</td>
+<td>+20.67</td>
+<td>AENT</td>
+<td>−22.65</td>
+</tr>
+<tr>
+<td>TBPH</td>
+<td>+5.44</td>
+<td>FOUR</td>
+<td>−21.48</td>
+</tr>
+<tr>
+<td>RLI</td>
+<td>+5.10</td>
+<td>BUR</td>
+<td>−16.95</td>
+</tr>
+<tr>
+<td>BMI</td>
+<td>+4.25</td>
+<td>GPN</td>
+<td>−14.99</td>
+</tr>
+<tr>
+<td>POOL</td>
+<td>+1.13</td>
+<td>COGT</td>
+<td>−14.60</td>
+</tr>
+</tbody>
+</table></div>
+<p>24 names, total trading P&amp;L −$106.17 on a full-FIFO basis. (The cost waterfall lists $97.68 instead, which is the account's mark-to-market realized loss; this −$106.17 is the full FIFO ledger, every closed lot plus the $59.32 in commissions. Same loss, two accounting conventions, about $8 apart.) And here's the part that stings: $59.32 of that was commissions, 56% of the entire loss. Ex-fees, her trades lost just −$46.85; the fees more than doubled it. She paid ~6% of a $1,000 book in commissions, having literally identified and written herself that overtrading would lead to losses from commission drag.</p>
+<h4>The model swap: what ifs</h4>
+<p>One of my biggest "what if"s is that I switched from Anthropic models for everything to open and consumer models for every step. I'll never fully know how much that changed the results. So I had Claude (admittedly maybe biased) go through <em>all</em> of the pre/post model-swap points, and there isn't really any easy takeaway. </p>
+<p>I'll list out a few major points for both sides.
+- Identity hallucinations. qwen pitched ESTA (a breast-implant maker) on an "Ozempic/FDA" catalyst. It called OBE "oil sands" (it's conventional oil) and pasted Calumet's writeup into the OBE thesis. It bought VISN on "strong fundamentals," then "discovered" its −$1.5B loss days later. Sonnet's worst defect in the whole era was a minor EBITDA-multiple typo on FOUR.
+- Duplicate churn. qwen re-emitted the same trade in bursts: RILY bought 4×, PEW 3×, within minutes, identical text, 31 such bursts. Zero in the Sonnet era.
+- Thinner theses. Sonnet wrote 3.9 falsification criteria per decision (≈10.6 words each); qwen wrote 2.7 (≈7.6 words), and more of them were vague or always-true.</p>
+<p>So on the question of whether the decision-making got noticeably worse: on coherence and factual grounding, yes, visibly. Those are exactly the errors a weaker model makes and a "frontier" one doesn't.</p>
+<p>Now it's tempting to read the entire downfall of the project at the model switch but it isn't that easy:
+- P&amp;L by the model that made the entry: Sonnet +$15.76 / 57% win, qwen −$62.26 / 38% win. That looks damning, but it's confounded to uselessness. The Sonnet era owns the single worst loser (FOUR −$19.50); the qwen era owns the best winner (RILY +$24); qwen deployed ~6× the capital ($3,037 vs $532) straight into a deteriorating one-factor Iran/Hormuz oil bet<sup id="fnref:8"><a class="footnote-ref" href="#fn:8">8</a></sup>; and the Sonnet sample is only 14 decisions over five weeks. Fill and reject rates were identical (~50%) across both, so rejection was infrastructure, not the model.</p>
+<p>So yes, the cheap model made measurably sloppier points, less factual claims, and had more repetitive reasoning. But "the cheap models lost the money" isn't clearly supported. The losing was over-trading a bad macro thesis at 6× the size, which Sonnet might well have done too (it had its own FOUR disaster on a large portion of the capital it had access to). So the line I can defend: the switch visibly degraded how she thought; it did not demonstrably change whether she won or lost. (Meaning a redo with solely frontier models would be a fun test, I don't have <em>enough</em> money to light on fire to sustain Opus/5.6 prices though)</p>
+<h2>Costs (don't make too much fun of me for how much this cost)</h2>
+<p><img loading="lazy" alt="All-in ~$693: data subscriptions outspent the models; trading loss smallest" src="https://s3.evangeline.host/i/03_cost_waterfall.png" /></p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Provider / Model (role)</th>
+<th>API calls</th>
+<th>Input tok</th>
+<th>Output tok</th>
+<th>Total tok</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic, Feb→Apr (daily-aggregated export; cost token-derived)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>claude-sonnet-4-6</td>
+<td>–</td>
+<td>51.7M</td>
+<td>0.89M</td>
+<td>52.6M</td>
+<td>$110.67</td>
+</tr>
+<tr>
+<td>claude-haiku-4-5</td>
+<td>–</td>
+<td>49.6M</td>
+<td>1.08M</td>
+<td>50.7M</td>
+<td>$54.15</td>
+</tr>
+<tr>
+<td>claude-opus-4-6</td>
+<td>–</td>
+<td>10.9M</td>
+<td>0.12M</td>
+<td>11.0M</td>
+<td>$38.74</td>
+</tr>
+<tr>
+<td>claude-sonnet-4-5</td>
+<td>–</td>
+<td>4.6M</td>
+<td>0.24M</td>
+<td>4.9M</td>
+<td>$17.47</td>
+</tr>
+<tr>
+<td>Anthropic subtotal</td>
+<td>228 daily records</td>
+<td>116.8M</td>
+<td>2.3M</td>
+<td>119.1M</td>
+<td>$221.03</td>
+</tr>
+<tr>
+<td>OpenRouter, Apr 5→Jun 16 (real per-call billing)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>deepseek-v3.2 (agent reasoning)</td>
+<td>5,303</td>
+<td>81.7M</td>
+<td>0.89M</td>
+<td>82.6M</td>
+<td>$12.51</td>
+</tr>
+<tr>
+<td>qwen-plus (deep_analysis)</td>
+<td>731</td>
+<td>55.1M</td>
+<td>0.33M</td>
+<td>55.4M</td>
+<td>$6.49</td>
+</tr>
+<tr>
+<td>gemma-4-26b (news triage)</td>
+<td>25,713</td>
+<td>12.3M</td>
+<td>0.85M</td>
+<td>13.2M</td>
+<td>$1.52</td>
+</tr>
+<tr>
+<td>grok-4.1-fast (reviews)</td>
+<td>147</td>
+<td>5.3M</td>
+<td>0.34M</td>
+<td>5.7M</td>
+<td>$0.88</td>
+</tr>
+<tr>
+<td>gpt-oss-120b (substack extract)</td>
+<td>99</td>
+<td>0.33M</td>
+<td>0.21M</td>
+<td>0.54M</td>
+<td>$0.07</td>
+</tr>
+<tr>
+<td>gemma-3-12b (substack vision)</td>
+<td>166</td>
+<td>0.06M</td>
+<td>0.11M</td>
+<td>0.17M</td>
+<td>$0.02</td>
+</tr>
+<tr>
+<td>experimental/eval (~14 models, long tail)</td>
+<td>~44</td>
+<td>0.13M</td>
+<td>0.13M</td>
+<td>0.26M</td>
+<td>~$0.22</td>
+</tr>
+<tr>
+<td>OpenRouter subtotal</td>
+<td>32,203</td>
+<td>154.9M</td>
+<td>2.9M</td>
+<td>157.8M</td>
+<td>$21.71</td>
+</tr>
+<tr>
+<td>TOTAL</td>
+<td>32,431</td>
+<td>271.7M</td>
+<td>5.2M</td>
+<td>276.9M</td>
+<td>$242.75</td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Amount</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LLM (above)</td>
+<td>$242.75</td>
+<td>real + token-derived</td>
+</tr>
+<tr>
+<td>Yellowbrick: $29.99 × 5 (Jan 28 → May 28)</td>
+<td>$149.95</td>
+<td>receipts</td>
+</tr>
+<tr>
+<td>FMP: $29 × 5 (Feb 12 → Jun 12)</td>
+<td>$145.00</td>
+<td>receipts</td>
+</tr>
+<tr>
+<td>Substack: $7 × 6 (Jan 19 → Jun 18)</td>
+<td>$42.00</td>
+<td>receipts</td>
+</tr>
+<tr>
+<td>Hosting: Hetzner CX33 (~$8/mo)</td>
+<td>~$16</td>
+<td>estimate</td>
+</tr>
+<tr>
+<td>Realized trading loss</td>
+<td>$97.68</td>
+<td>actual</td>
+</tr>
+<tr>
+<td>All-in total</td>
+<td>≈ $693</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h2>What I'd do differently</h2>
+<p>If I were rebuilding it, in rough priority order:</p>
+<ol>
+<li>Trade far less. Most of the damage was motion. A value strategy that turns over its book nineteen times on one ticker in six weeks is not a value strategy. Cap turnover hard, and make every proposed trade clear a cost hurdle the agent already knows about (it wrote the 2% rule itself).</li>
+<li>Trust no feed until it's proven fresh. Stale prices and a frozen social feed corrupted the inputs. Pre-flight freshness checks on every data source, and refuse to trade on stale marks rather than reasoning off them.</li>
+<li>Close the loop. The journal-with-falsification-criteria was a good idea undermined by never being read. Reviewing past decisions and feeding real outcomes back into the principle store is the difference between a system that ingests a textbook and one that actually learns.</li>
+<li>Make the risk layer able to say no. 776 approvals and zero rejections is not a risk check.</li>
+</ol>
+<p>And the honest accounting of worth: as a money-making venture it failed (which I never expected it to be). But what it shows, in my opinion, is that a language model with a brokerage key and a news feed will, given the chance, day-trade headlines into the ground while reciting Benjamin Graham. As an experiment it was a clean, well-instrumented run that produced an unusually legible failure: every trade, every thesis, every dollar of model spend is on record. The most useful artifact isn't the equity curve. It's the list of capability wishes, a precise self-authored diagnosis of everything that went wrong, written by the thing that was going wrong. That's the part worth keeping.</p>
+<p>Maybe the real win would have been a mix of both: Sonnet/Opus for the higher-level decisions, the bulk processing moved to the much cheaper open-hosted models. No real way to know what would have happened, though. If someone wants to fund a redo using entirely Anthropic models (or another provider), I'd be very interested; for me, at the time, it was just unjustifiable. If you, the reader, have any questions after all of this, feel free to reach me at evangelinekamin07@gmail.com.</p>
+<h2>Appendix: what's in this repository</h2>
+<p>The full archive of the Valhalla Capital / Valkyrie system, captured at controlled shutdown on 2026-06-16. Secrets and personal identifiers have been removed; the data is otherwise complete.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>services/</code></td>
+<td>Source for every component: <code>overseer</code> (the Valkyrie agent), <code>ibkr-trading-gateway</code>, <code>dashboard</code>, and the data pipelines (<code>fmp</code>, <code>twitter</code>, <code>news</code>, <code>openinsider</code>, <code>yellowbrick</code>, <code>substack</code>).</td>
+</tr>
+<tr>
+<td><code>data/csv/</code></td>
+<td>19 analysis-ready table exports: decision journal, learned principles, theses, trades, equity curve, cycle logs. Start here.</td>
+</tr>
+<tr>
+<td><code>data/db/</code></td>
+<td>Full gzipped PostgreSQL dumps (overseer, trading, twitter, miniflux, fmp_cache) + the substack SQLite. Complete schema + data.</td>
+</tr>
+<tr>
+<td><code>data/state/</code></td>
+<td>Final portfolio state and the trade-request history.</td>
+</tr>
+<tr>
+<td><code>logs/</code></td>
+<td>Per-container logs from the run.</td>
+</tr>
+<tr>
+<td><code>meta/</code></td>
+<td><code>docker-compose.yml</code>, systemd units, container/image inventory, and key/secret inventories (names only).</td>
+</tr>
+<tr>
+<td><code>docs/DATA_DICTIONARY.md</code></td>
+<td>The original archive manifest describing every table and file.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Recovered from the Backblaze B2 archive valhalla-final-20260616-2259. data/SHA256SUMS.bundle-original holds checksums of the original pre-scrub bundle.</p>
+<h2>License &amp; use</h2>
+<p>The component code was published under permissive terms and remains reusable. The data is provided as-is for research and archival interest, includes scraped third-party content retained under archival/fair-use, and carries no warranty. Do with it what you like.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Checking in while writing it seems they've brought back the pay per use (granted still with egregious pricing, 0.005$ per unit read of a post is crazy to me) and are billing it as the "<a href="https://s3.evangeline.host/i/Good-Pachyderm.png">new and improved way</a>" even though they were the ones that changed it off of that :P&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>Said movement mostly looked like https://xkcd.com/1428/&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>I don't have exact numbers for part of the run so that number is extrapolated from after I added tracking and logging to everything.&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>I got this theory from RoaringKitty. Whether that is good or bad is left as an exercise for the reader.&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Oh yeah I made it so the agent could wish for things and I'd try to implement them. Never really happened though aside from this so I kinda just left it out.&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>If this means I invented autoresearch before autoresearch I will gladly take a 7 figure anthropic check tyvm. (Clearly nobody has invented/conceived of recursion learning before)&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>https://www.youtube.com/watch?v=wvXDB9dMdEo&amp;list=PLUl4u3cNGP63ctJIEC1UnZ0btsphnnoHR&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+</li>
+<li id="fn:8">
+<p>Funnily enough, I lost money in my own portfolio based on a similar bet. Something something apples and trees.&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
             </div>
         </section>
 
         <!-- -- Footer ------------------------------------------------ -->
         <footer class="footer section">
             <nav class="footer__links" aria-label="Project resources">
-                <a href="https://github.com/evangelinekamin/valhalla-capital">Code &amp; data &amp; post-mortem &rarr;</a>
+                <a href="https://github.com/evangelinekamin/valhalla-capital">The full archive on GitHub &rarr;</a>
             </nav>
             <p class="footer__note">
-                The full writeup and the raw data &mdash; every cycle, every trade, every principle,
-                the complete equity series &mdash; live in the repository. The stop held. The four
+                The full writeup and the raw data (every cycle, every trade, every principle,
+                the complete equity series) live in the repository. The stop held. The four
                 positions are someone else&rsquo;s problem now.
             </p>
             <p class="footer__memoriam">
